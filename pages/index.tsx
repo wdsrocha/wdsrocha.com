@@ -1,5 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 import { Post, getAllPosts } from "../lib/api";
 
@@ -23,7 +24,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <meta name="description" content="wdsrocha's homepage" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>Home</main>
+      home
     </>
   );
 };
