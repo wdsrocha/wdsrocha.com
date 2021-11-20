@@ -1,5 +1,4 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import { Post, getAllPosts } from "../../lib/api";
@@ -19,26 +18,25 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <>
-      <Head>
-        <title>wdsrocha&apos;s homepage</title>
-        <meta name="description" content="wdsrocha's homepage" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-        <pre>{JSON.stringify(posts, null, 2)}</pre>
-
+      <header className="mt-10 mb-8">
+        <h1 className="text-4xl font-extrabold">Blog posts</h1>
+      </header>
+      <ol>
         {posts.map((post) => (
           <li key={post.slug}>
-            <section>
-              <h1>
+            <article>
+              <div className="block mt-4">
                 <Link as={`/blog/${post.slug}`} href={"/blog/[slug]"}>
-                  {post.title}
+                  <a className="text-xl font-bold">{post.title}</a>
                 </Link>
-              </h1>
-            </section>
+              </div>
+              <time className="text-sm text-gray-700" dateTime={post.date}>
+                {post.date}
+              </time>
+            </article>
           </li>
         ))}
-      </main>
+      </ol>
     </>
   );
 };

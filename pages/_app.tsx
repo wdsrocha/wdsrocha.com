@@ -1,52 +1,42 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import React from "react";
 import Link from "next/link";
 import { Layout } from "../components/Layout";
 import { createGlobalStyle, css } from "styled-components";
+import "tailwindcss/tailwind.css";
 
 // `css` is used due to a Prettier bug when used with `createGlobalStyle`
 // https://github.com/styled-components/vscode-styled-components/issues/175
 const GlobalStyle = createGlobalStyle`${css`
-  /* CSS Reset: https://courses.joshwcomeau.com/css-for-js/treasure-trove/010-global-styles */
+  /* CSS Reset based on:
+   * https://courses.joshwcomeau.com/css-for-js/treasure-trove/010-global-styles */
 
-  /* 1. Use a more-intuitive box-sizing model. */
+  /* Use a more-intuitive box-sizing model. */
   *,
   *::before,
   *::after {
     box-sizing: border-box;
   }
 
-  /* 2. Remove default margin for common elements */
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  figure,
-  blockquote,
-  ul,
-  ol,
-  dl,
-  dt,
-  dd {
-    margin: 0;
-  }
-
-  /* 3. Allow percentage-based heights in the application */
+  /* Allow percentage-based heights in the application */
   html,
   body,
   #__next {
+    padding: 0;
+    margin: 0;
     height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
-  /* 4. Improve the typography across the site. */
+  /* Create a root stacking context */
+  #__next {
+    isolation: isolate;
+  }
+
+  /* Improve the typography across the site. */
   body {
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
   /* 5. Make images easier to work with */
@@ -56,7 +46,7 @@ const GlobalStyle = createGlobalStyle`${css`
     display: block;
   }
 
-  /* 6. Inherit fonts for inputs and buttons */
+  /* Inherit fonts for inputs and buttons */
   input,
   button,
   textarea,
@@ -64,9 +54,103 @@ const GlobalStyle = createGlobalStyle`${css`
     font: inherit;
   }
 
-  /* 7. Create a root stacking context */
-  #__next {
-    isolation: isolate;
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 `}`;
 

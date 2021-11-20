@@ -15,31 +15,6 @@ export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
   };
 };
 
-const Main = styled.main`
-  display: inline-block;
-  position: relative;
-  color: white;
-
-  &:after {
-    content: "";
-    content: "";
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1;
-    top: 110%;
-    left: 0;
-    backgroundcolor: white;
-    transformorigin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
-  }
-
-  &:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-`;
-
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
@@ -50,7 +25,6 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <meta name="description" content="wdsrocha's homepage" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      home
     </>
   );
 };
