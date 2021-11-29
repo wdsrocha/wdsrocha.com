@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
 
 interface Props {
   children?: React.ReactNode;
@@ -8,12 +7,12 @@ interface Props {
 
 export const Layout = ({ children }: Props) => {
   return (
-    <div className="mx-auto max-w-3xl flex flex-col h-screen">
-      <header className="mt-8">
-        <nav className="flex justify-between">
+    <div className="mx-auto max-w-3xl flex flex-col h-screen px-8">
+      <header className="mt-8 text-2xl font-semibold">
+        <nav className="flex justify-between  items-center">
           <div>
             <Link href="/" passHref>
-              <a>wdsrocha</a>
+              <a>@wdsrocha</a>
             </Link>
           </div>
           <div className="flex gap-4">
@@ -26,8 +25,11 @@ export const Layout = ({ children }: Props) => {
           </div>
         </nav>
       </header>
-      <main className="flex-grow">{children}</main>
-      <footer role="contentinfo" className="flex justify-center mb-8 gap-4">
+      <main className="flex-grow my-8">{children}</main>
+      <footer
+        role="contentinfo"
+        className="flex justify-center mb-8 gap-4 text-xl"
+      >
         <a href="https://github.com/wdsrocha/">GitHub</a>
         <a href="https://linkedin.com/in/wdsrocha/">LinkedIn</a>
         <a href="https://twitter.com/wdsrocha/">Twitter</a>

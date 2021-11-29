@@ -22,6 +22,15 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
+type ContentName = "home";
+
+export const convertMarkdownToHtml = async (contentName: ContentName) => {
+  const fullPath = join(process.cwd(), `contents/${contentName}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf-8");
+  const { content } = matter(fileContents);
+  return await markdownToHtml(content);
+};
+
 export async function getPostBySlug(slug: string, fields: (keyof Post)[] = []) {
   const slugWithoutExtension = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${slugWithoutExtension}.md`);

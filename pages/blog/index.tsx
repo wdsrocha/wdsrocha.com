@@ -1,6 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
 import React from "react";
+import { Title } from "../../components/Title";
 import { Post, getAllPosts } from "../../lib/api";
 
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
@@ -18,8 +19,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <>
-      <header className="mt-10 mb-8">
-        <h1 className="text-4xl font-extrabold">Blog posts</h1>
+      <header>
+        <Title>Blog posts</Title>
       </header>
       <ol>
         {posts.map((post) => (

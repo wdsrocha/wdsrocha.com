@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/colors": "^0.1.7",
     "gray-matter": "^4.0.3",
     "next": "12",
     "react": "^17.0.2",

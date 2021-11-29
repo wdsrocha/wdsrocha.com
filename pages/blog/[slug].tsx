@@ -4,7 +4,9 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
+import React from "react";
 import styled from "styled-components";
+import { Title } from "../../components/Title";
 import { getAllPosts, getPostBySlug, Post } from "../../lib/api";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -44,8 +46,8 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <article>
-      <header className="mt-10">
-        <h1 className="text-4xl font-extrabold">{post.title}</h1>
+      <header>
+        <Title>{post.title}</Title>
         <time className="text-gray-700" dateTime={post.date}>
           {post.date}
         </time>
