@@ -2,10 +2,12 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
 import React from "react";
 import { Title } from "../../components/Title";
-import { Post, getAllPosts } from "../../lib/api";
+import { Post } from "../../lib/api";
 
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
-  const posts = await getAllPosts(["title", "date", "slug", "content"]);
+  // Disabled while there are no blog posts
+  // const posts = await getAllPosts(["title", "date", "slug", "content"]);
+  const posts: Post[] = [];
 
   return {
     props: {
@@ -17,6 +19,21 @@ export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
+  // Remove after adding the first blog post!!
+  if (!posts.length) {
+    return (
+      <>
+        <header>
+          <Title>Blog posts</Title>
+        </header>
+        <div>
+          Hey, stop peeping into the sitemap 😠! There is nothing to see here
+          (for now 👀).
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <header>

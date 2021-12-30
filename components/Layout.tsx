@@ -1,5 +1,14 @@
 import Link from "next/link";
 import React from "react";
+import styled from "styled-components";
+import { colors } from "../lib/constants";
+import {
+  RiGithubFill,
+  RiLinkedinBoxFill,
+  RiTelegramFill,
+  RiTwitterFill,
+  RiMailFill,
+} from "react-icons/ri";
 
 interface Props {
   children?: React.ReactNode;
@@ -7,36 +16,51 @@ interface Props {
 
 export const Layout = ({ children }: Props) => {
   return (
-    <div className="mx-auto max-w-3xl flex flex-col h-screen px-8">
-      <header className="mt-8 text-2xl font-semibold">
-        <nav className="flex justify-between  items-center">
-          <div>
-            <Link href="/" passHref>
-              <a>@wdsrocha</a>
-            </Link>
-          </div>
-          <div className="flex gap-4">
-            <Link href="/about/" passHref>
-              <a>About</a>
-            </Link>
-            <Link href="/blog/" passHref>
-              <a data-current={true}>Blog</a>
-            </Link>
-          </div>
-        </nav>
+    <div className="mx-auto max-w-3xl flex flex-col h-screen pt-4 px-5">
+      <header className="text-3xl font-semibold">
+        <Link href="/" passHref>
+          <a
+            style={{
+              color: colors.highlightedText,
+            }}
+          >
+            @wdsrocha
+          </a>
+        </Link>
       </header>
-      <main className="flex-grow my-8">{children}</main>
+      <div className="flex-grow mb-8">
+        <main className="mt-4 flex flex-col gap-4 bg-white p-8 sm:mx-0 -mx-5 shadow-lg">
+          {children}
+        </main>
+      </div>
       <footer
         role="contentinfo"
-        className="flex justify-center mb-8 gap-4 text-xl"
+        className="flex justify-center gap-4 text-3xl bg-white p-4 shadow-lg sm:mx-0 -mx-5"
       >
-        <a href="https://github.com/wdsrocha/">GitHub</a>
-        <a href="https://linkedin.com/in/wdsrocha/">LinkedIn</a>
-        <a href="https://twitter.com/wdsrocha/">Twitter</a>
+        <a href="https://github.com/wdsrocha/">
+          <RiGithubFill color={colors.text} />
+        </a>
+        <a href="https://linkedin.com/in/wdsrocha/">
+          <RiLinkedinBoxFill color={colors.text} />
+        </a>
+        <a href="https://twitter.com/wdsrocha/">
+          <RiTwitterFill color={colors.text} />
+        </a>
+        <a href="https://t.me/wdsrocha/">
+          <RiTelegramFill color={colors.text} />
+        </a>
+        <a href="mailto:hi@wdsrocha.com">
+          <RiMailFill color={colors.text} />
+        </a>
       </footer>
     </div>
   );
 };
+
+const FooterLink = styled.a`
+  color: ${colors.highlightedText};
+  font-weight: 600;
+`;
 
 // const HeaderLink = styled.a`
 /* font-weight: 700;

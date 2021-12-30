@@ -1,0 +1,54 @@
+body {
+  background-color: #fdfcfd;
+  opacity: 1;
+  background-image: linear-gradient(
+      30deg,
+      #eeedef 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #eeedef 87.5%,
+      #eeedef
+    ),
+    linear-gradient(
+      150deg,
+      #eeedef 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #eeedef 87.5%,
+      #eeedef
+    ),
+    linear-gradient(
+      30deg,
+      #eeedef 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #eeedef 87.5%,
+      #eeedef
+    ),
+    linear-gradient(
+      150deg,
+      #eeedef 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #eeedef 87.5%,
+      #eeedef
+    ),
+    linear-gradient(
+      60deg,
+      #eeedef77 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #eeedef77 75%,
+      #eeedef77
+    ),
+    linear-gradient(
+      60deg,
+      #eeedef77 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #eeedef77 75%,
+      #eeedef77
+    );
+  background-size: 46px 81px;
+  background-position: 0 0, 0 0, 23px 40px, 23px 40px, 0 0, 23px 40px;
+}

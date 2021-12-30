@@ -16,11 +16,19 @@ export interface Post {
   content?: string;
 }
 
-const postsDirectory = join(process.cwd(), "blog");
+const postsDirectory = join(process.cwd(), "contents/blog");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
+
+export const getHomeDescription = () => {
+  const fullPath = join(process.cwd(), `contents/home.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf-8");
+  const { content } = matter(fileContents);
+  console.log({ content });
+  return content.split("\n")[0];
+};
 
 type ContentName = "home";
 

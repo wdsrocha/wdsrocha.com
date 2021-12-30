@@ -1,9 +1,10 @@
 import type { AppProps } from "next/app";
 import React from "react";
-import Link from "next/link";
 import { Layout } from "../components/Layout";
 import { createGlobalStyle, css } from "styled-components";
+import { colors } from "../lib/constants";
 import "tailwindcss/tailwind.css";
+import "./styles.css";
 
 // `css` is used due to a Prettier bug when used with `createGlobalStyle`
 // https://github.com/styled-components/vscode-styled-components/issues/175
@@ -151,6 +152,12 @@ const GlobalStyle = createGlobalStyle`${css`
   a {
     color: inherit;
     text-decoration: none;
+    outline-color: ${colors.outline};
+  }
+
+  body {
+    outline-color: ${colors.outline};
+    color: ${colors.text};
   }
 `}`;
 
