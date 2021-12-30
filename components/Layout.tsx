@@ -56,21 +56,3 @@ export const Layout = ({ children }: Props) => {
     </div>
   );
 };
-
-const FooterLink = styled.a`
-  color: ${colors.highlightedText};
-  font-weight: 600;
-`;
-
-// const HeaderLink = styled.a`
-/* font-weight: 700;
-  font-size: 1.5rem;
-  color: hsl(0, 0%, 50%);
-
-  & + a {
-    margin-left: 16px;
-  }
-
-  &:hover {
-    color: hsl(0, 0%, 0%);
-    */
