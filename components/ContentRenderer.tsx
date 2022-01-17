@@ -57,6 +57,16 @@ const Wrapper = styled.section`
 
   a {
     color: ${colors.link};
+    --bg-h: 2px;
+    background: linear-gradient(0deg, ${colors.link}, ${colors.link}) no-repeat
+      right bottom / 0 var(--bg-h);
+    transition: background-size 350ms;
+    padding-bottom: 2px;
+
+    :where(:hover, :focus-visible) {
+      background-size: 100% var(--bg-h);
+      background-position-x: left;
+    }
   }
 
   p {
