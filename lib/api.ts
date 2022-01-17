@@ -26,7 +26,6 @@ export const getHomeDescription = () => {
   const fullPath = join(process.cwd(), `contents/home.md`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   const { content } = matter(fileContents);
-  console.log({ content });
   return content.split("\n")[0];
 };
 
