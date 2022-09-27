@@ -6,7 +6,10 @@ interface Props {
 }
 
 export const ContentRenderer = ({ children }: Props) => (
-  <Wrapper dangerouslySetInnerHTML={{ __html: (children as string) ?? "" }} />
+  <Wrapper
+    className="flex flex-col gap-2"
+    dangerouslySetInnerHTML={{ __html: (children as string) ?? "" }}
+  />
 );
 
 // TODO: Use Twin Macro when available for NextJS 12
@@ -75,7 +78,8 @@ const Wrapper = styled.section`
     line-height: 1.75rem;
   }
 
-  code {
+  code,
+  pre {
     // font-mono
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       "Liberation Mono", "Courier New", monospace;
@@ -85,6 +89,6 @@ const Wrapper = styled.section`
     background-color: rgba(229, 231, 235, var(--tw-bg-opacity)); //
 
     padding: 1px;
-    margin: -1px;
+    white-space: pre-wrap;
   }
 `;
