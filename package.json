@@ -30,7 +30,7 @@
     "autoprefixer": "^10.4.0",
     "babel-plugin-styled-components": "^1.13.3",
     "cross-env": "^7.0.3",
-    "eslint": "8.1.0",
+    "eslint": "<8.0.0",
     "eslint-config-next": "11.1.2",
     "next-remote-watch": "^1.0.0",
     "next-sitemap": "^1.6.203",
