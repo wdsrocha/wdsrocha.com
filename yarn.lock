@@ -4676,6 +4676,11 @@ which@^2.0.1:
   dependencies:
     isexe "^2.0.0"
 
+windy-radix-palette@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/windy-radix-palette/-/windy-radix-palette-0.2.0.tgz#2dbcd2b30633b8ae3c895492a3ba57089394dac8"
+  integrity sha512-6k6DfNGog0bnGm2A/DU8f9syrL+K0L6Nbwrb/e20bOrZKJ38L1UUWQCJnIICmEX2yS4piqcl03tk6W5dT3ZE2w==
+
 word-wrap@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
