@@ -9,7 +9,7 @@ date: "2022-09-27"
 
 For the following `package.json` (only scripts):
 
-```
+```json
 "scripts": {
   "build": "build-storybook",
   "lint": "eslint --ext js,jsx,ts,tsx .",
