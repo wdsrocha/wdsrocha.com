@@ -15,15 +15,21 @@ interface Props {
 
 export const Layout = ({ children }: Props) => {
   return (
-    <div className="mx-auto max-w-3xl flex flex-col h-screen pt-4 px-5">
-      <header className="text-3xl font-semibold">
+    <div className="mx-auto max-w-4xl flex flex-col h-screen pt-4 px-5">
+      <header className="flex justify-between flex-col sm:items-center sm:flex-row">
         <Link href="/" passHref>
           <a
             style={{
               color: colors.highlightedText,
             }}
+            className="text-3xl font-semibold text-pink-11"
           >
             @wdsrocha
+          </a>
+        </Link>
+        <Link href="/til" passHref>
+          <a className="text-2xl font-semibold text-pink-11 hover:underline">
+            Today I Learned
           </a>
         </Link>
       </header>

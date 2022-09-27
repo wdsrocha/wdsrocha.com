@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-async function markdownToHtml(markdown: string) {
+export async function markdownToHtml(markdown: string) {
   const result = await remark().use(html).process(markdown);
   return result.toString();
 }
@@ -16,10 +16,14 @@ export interface Post {
   content?: string;
 }
 
-const postsDirectory = join(process.cwd(), "contents/blog");
+type PostCategory = "blog" | "til";
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+function getPostsDirectory(category: PostCategory): string {
+  return join(process.cwd(), `contents/${category}`);
+}
+
+export function getPostSlugs(category: PostCategory): string[] {
+  return fs.readdirSync(getPostsDirectory(category));
 }
 
 export const getHomeDescription = () => {
@@ -38,9 +42,16 @@ export const convertMarkdownToHtml = async (contentName: ContentName) => {
   return await markdownToHtml(content);
 };
 
-export async function getPostBySlug(slug: string, fields: (keyof Post)[] = []) {
+export async function getPostBySlug(
+  category: PostCategory,
+  slug: string,
+  fields: (keyof Post)[] = []
+) {
   const slugWithoutExtension = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${slugWithoutExtension}.md`);
+  const fullPath = join(
+    getPostsDirectory(category),
+    `${slugWithoutExtension}.md`
+  );
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -59,10 +70,13 @@ export async function getPostBySlug(slug: string, fields: (keyof Post)[] = []) {
   return post;
 }
 
-export async function getAllPosts(fields: (keyof Post)[] = []) {
-  const slugs = getPostSlugs();
+export async function getAllPosts(
+  category: PostCategory,
+  fields: (keyof Post)[] = []
+) {
+  const slugs = getPostSlugs(category);
   const posts = await Promise.all(
-    slugs.map((slug) => getPostBySlug(slug, fields))
+    slugs.map((slug) => getPostBySlug(category, slug, fields))
   );
   return posts.sort((post1, post2) =>
     (post1?.date ?? "") > (post2?.date ?? "") ? -1 : 1
