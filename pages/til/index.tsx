@@ -2,7 +2,6 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import React from "react";
-import { Title } from "../../components/Title";
 import { getAllPosts, Post } from "../../lib/api";
 
 export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
