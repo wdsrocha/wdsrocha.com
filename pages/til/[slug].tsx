@@ -4,6 +4,7 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
+import { NextSeo } from "next-seo";
 import React from "react";
 import { ContentRenderer } from "../../components/ContentRenderer";
 import { getAllPosts, getPostBySlug, Post } from "../../lib/api";
@@ -44,15 +45,18 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
 }) => {
   return (
-    <article>
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-        <time className="text-gray-700" dateTime={post.date}>
-          {post.date}
-        </time>
-      </header>
-      <ContentRenderer size="xl">{post.content}</ContentRenderer>
-    </article>
+    <>
+      <NextSeo title={`${post.title} | TIL`} />
+      <article>
+        <header className="mb-8">
+          <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+          <time className="text-gray-700" dateTime={post.date}>
+            {post.date}
+          </time>
+        </header>
+        <ContentRenderer size="xl">{post.content}</ContentRenderer>
+      </article>
+    </>
   );
 };
 

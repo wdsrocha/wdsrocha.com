@@ -1,4 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 import React from "react";
 import { Title } from "../../components/Title";
@@ -19,6 +20,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <>
+      <NextSeo title="TIL" />
       <header>
         <h1 className="text-2xl font-bold mb-2">TIL – Today I Learned</h1>
       </header>
