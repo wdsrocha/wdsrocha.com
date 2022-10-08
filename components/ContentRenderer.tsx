@@ -9,7 +9,10 @@ interface Props {
 
 export const ContentRenderer = ({ children, size = "base" }: Props) => (
   <Wrapper
-    className={classNames("prose prose-a:no-underline", `prose-${size}`)}
+    className={classNames(
+      "prose prose-a:no-underline prose-pre:whitespace-pre-wrap",
+      `prose-${size}`
+    )}
     dangerouslySetInnerHTML={{ __html: (children as string) ?? "" }}
   />
 );
