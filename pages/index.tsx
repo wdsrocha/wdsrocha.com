@@ -2,7 +2,6 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { ContentRenderer } from "../components/ContentRenderer";
-import { Title } from "../components/Title";
 import { convertMarkdownToHtml, getHomeDescription } from "../lib/api";
 
 export const getStaticProps: GetStaticProps<{
@@ -35,10 +34,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <meta name="description" content={description} />
         <Favicon />
       </Head>
-      <header>
-        <Title>{"Hi 👋"}</Title>
-      </header>
-      <ContentRenderer>{content}</ContentRenderer>
+      <ContentRenderer size="xl">{content}</ContentRenderer>
     </>
   );
 };

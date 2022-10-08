@@ -20,7 +20,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <header>
-        <h1 className="text-4xl font-bold mb-2">TIL – Today I Learned</h1>
+        <h1 className="text-2xl font-bold mb-2">TIL – Today I Learned</h1>
       </header>
       <ol>
         {posts.map((post) => (

@@ -1,14 +1,17 @@
+import classNames from "classnames";
 import styled from "styled-components";
 import { colors } from "../lib/constants";
 
 interface Props {
+  size?: "sm" | "base" | "lg" | "xl";
   children?: React.ReactNode;
 }
 
-export const ContentRenderer = ({ children }: Props) => (
-  <Wrapper className="prose prose-a:no-underline">
-    <div dangerouslySetInnerHTML={{ __html: (children as string) ?? "" }} />
-  </Wrapper>
+export const ContentRenderer = ({ children, size = "base" }: Props) => (
+  <Wrapper
+    className={classNames("prose prose-a:no-underline", `prose-${size}`)}
+    dangerouslySetInnerHTML={{ __html: (children as string) ?? "" }}
+  />
 );
 
 // TODO: Use Twin Macro when available for NextJS 12

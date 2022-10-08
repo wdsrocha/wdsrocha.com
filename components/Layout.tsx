@@ -22,7 +22,7 @@ export const Layout = ({ children }: Props) => {
             style={{
               color: colors.highlightedText,
             }}
-            className="text-3xl font-semibold text-pink-11"
+            className="text-2xl font-semibold text-pink-11 hover:underline"
           >
             @wdsrocha
           </a>
