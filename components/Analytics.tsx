@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const GA_ID = process.env.GA_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const Analytics = () => (
   <>
