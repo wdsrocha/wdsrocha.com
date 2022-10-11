@@ -5,6 +5,7 @@ import "tailwindcss/tailwind.css";
 import "./styles.css";
 import { DefaultSeo } from "next-seo";
 import { defaultSeoConfig } from "../lib/seo.config";
+import { Analytics } from "../components/Analytics";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <Analytics />
     </>
   );
 }
