@@ -1,6 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
-import Head from "next/head";
 import React from "react";
 import { ContentRenderer } from "../components/ContentRenderer";
 import { convertMarkdownToHtml, getHomeDescription } from "../lib/api";
@@ -22,7 +21,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <NextSeo description={description} />
-      <ContentRenderer size="xl">{content}</ContentRenderer>
+      <ContentRenderer>{content}</ContentRenderer>
     </>
   );
 };

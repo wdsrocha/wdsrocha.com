@@ -1,36 +1,19 @@
 import classNames from "classnames";
-import styled from "styled-components";
-import { colors } from "../lib/constants";
 
 interface Props {
-  size?: "sm" | "base" | "lg" | "xl";
   children?: React.ReactNode;
 }
 
-export const ContentRenderer = ({ children, size = "base" }: Props) => (
-  <Wrapper
+export const ContentRenderer = ({ children }: Props) => (
+  <article
     className={classNames(
-      "prose prose-a:no-underline prose-pre:whitespace-pre-wrap",
-      `prose-${size}`
+      "max-w-none",
+      "prose prose-mauve sm:prose-xl",
+      "prose-a hover:prose-a:no-underline prose-a:underline-offset-4 prose-a:text-primary-11",
+      "prose-h1 prose-h1:break-words",
+      "prose-h2 prose-h2:break-words",
+      "prose-code prose-code:bg-primary-3 prose-code:text-primary-11 prose-code:px-1 prose-code:rounded prose-code:before:content-[''] prose-code:after:content-['']"
     )}
     dangerouslySetInnerHTML={{ __html: (children as string) ?? "" }}
   />
 );
-
-// TODO: Use Twin Macro when available for NextJS 12
-// https://github.com/ben-rogerson/twin.macro/discussions/516
-const Wrapper = styled.section`
-  a {
-    color: ${colors.link};
-    --bg-h: 2px;
-    background: linear-gradient(0deg, ${colors.link}, ${colors.link}) no-repeat
-      right bottom / 0 var(--bg-h);
-    transition: background-size 350ms;
-    padding-bottom: 2px;
-
-    :where(:hover, :focus-visible) {
-      background-size: 100% var(--bg-h);
-      background-position-x: left;
-    }
-  }
-`;

@@ -3,9 +3,13 @@ import { join } from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import prism from "remark-prism";
 
 export async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html).process(markdown);
+  const result = await remark()
+    .use(html, { sanitize: false })
+    .use(prism, { plugins: ["line-numbers"] })
+    .process(markdown);
   return result.toString();
 }
 
@@ -46,7 +50,7 @@ export async function getPostBySlug(
   category: PostCategory,
   slug: string,
   fields: (keyof Post)[] = []
-) {
+): Promise<Post> {
   const slugWithoutExtension = slug.replace(/\.md$/, "");
   const fullPath = join(
     getPostsDirectory(category),
@@ -61,7 +65,7 @@ export async function getPostBySlug(
     if (field === "slug") {
       post[field] = slugWithoutExtension;
     } else if (field === "content") {
-      post[field] = await markdownToHtml(content ?? "");
+      post[field] = await markdownToHtml(content);
     } else if (data[field]) {
       post[field] = data[field];
     }
