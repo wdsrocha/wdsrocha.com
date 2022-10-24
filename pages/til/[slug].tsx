@@ -44,9 +44,11 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
 }) => {
+  const canonicalUrl = `https://www.wdsrocha.com/til/${post.slug}`;
+
   return (
     <>
-      <NextSeo title={`${post.title} | TIL`} />
+      <NextSeo title={`${post.title} | TIL`} canonical={canonicalUrl} />
       <p className="text-gray-11 text-base sm:text-xl italic">
         Published on <time dateTime={post.date}>{post.date}</time>
       </p>
