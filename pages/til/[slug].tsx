@@ -29,6 +29,7 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
 
   const post = await getPostBySlug("til", params?.slug, [
     "title",
+    "description",
     "date",
     "slug",
     "content",
@@ -44,15 +45,38 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
 }) => {
-  const canonicalUrl = `https://www.wdsrocha.com/til/${post.slug}`;
+  const { slug, title, description, date, content } = post;
+  const canonicalUrl = `https://www.wdsrocha.com/til/${slug}`;
 
   return (
     <>
-      <NextSeo title={`${post.title} | TIL`} canonical={canonicalUrl} />
+      <NextSeo
+        title={`${title} | TIL`}
+        description={description}
+        canonical={canonicalUrl}
+        openGraph={{
+          title,
+          description,
+          images: [
+            {
+              url: "https://www.wdsrocha.com/apple-touch-icon.png",
+              width: 180,
+              height: 180,
+              alt: "Capital letter W written in cursive form along side a pink background.",
+              type: "image/png",
+            },
+          ],
+        }}
+        twitter={{
+          cardType: "summary",
+          handle: "@wdsrocha",
+          site: "@wdsrocha",
+        }}
+      />
       <p className="text-gray-11 text-base sm:text-xl italic">
-        Published on <time dateTime={post.date}>{post.date}</time>
+        Published on <time dateTime={date}>{date}</time>
       </p>
-      <ContentRenderer>{post.content}</ContentRenderer>
+      <ContentRenderer>{content}</ContentRenderer>
     </>
   );
 };

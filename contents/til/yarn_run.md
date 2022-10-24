@@ -1,5 +1,8 @@
 ---
 title: "`yarn run` displays all available commands"
+description: "`yarn run` will display all available binary scripts and user
+defined scripts from the `package.json` file. Also, the same works for `npm
+run`."
 date: "2022-09-27"
 ---
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="https://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="https://www.w3.org/1999/xhtml" xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="https://www.google.com/schemas/sitemap-image/1.1" xmlns:video="https://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.wdsrocha.com</loc><lastmod>2022-10-24T03:19:19.749Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.wdsrocha.com/til</loc><lastmod>2022-10-24T03:19:19.749Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.wdsrocha.com/til/email_apostrophe</loc><lastmod>2022-10-24T03:19:19.749Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.wdsrocha.com/til/location_replace</loc><lastmod>2022-10-24T03:19:19.749Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.wdsrocha.com/til/yarn_run</loc><lastmod>2022-10-24T03:19:19.749Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.wdsrocha.com</loc><lastmod>2022-10-24T06:54:46.415Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.wdsrocha.com/til</loc><lastmod>2022-10-24T06:54:46.415Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.wdsrocha.com/til/email_apostrophe</loc><lastmod>2022-10-24T06:54:46.416Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.wdsrocha.com/til/location_replace</loc><lastmod>2022-10-24T06:54:46.416Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.wdsrocha.com/til/yarn_run</loc><lastmod>2022-10-24T06:54:46.416Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
