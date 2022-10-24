@@ -7,7 +7,7 @@
     "analyze": "cross-env ANALYZE=true next build",
     "dev": "next-remote-watch blog",
     "build": "next build",
-    "sitemap": "next-sitemap",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
