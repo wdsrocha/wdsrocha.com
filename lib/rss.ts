@@ -104,6 +104,11 @@ export interface Rss {
   webMaster?: string;
 
   /**
+   * Specifies a GIF, JPEG or PNG image that can be displayed with the channel.
+   */
+  image?: Image;
+
+  /**
    * Collection of items.
    *
    * @see Item
@@ -193,6 +198,30 @@ export interface Item {
   content?: string;
 }
 
+/**
+ * Specifies a GIF, JPEG or PNG image that can be displayed with the channel.
+ */
+export interface Image {
+  /**
+   * The URL of a GIF, JPEG or PNG image that represents the channel.
+   */
+  url: string;
+
+  /**
+   * Width of the image in pixels.
+   *
+   * Maximum value for width is 144, default value is 88.
+   */
+  width?: number;
+
+  /**
+   * Height of the image in pixels.
+   *
+   * Maximum value for height is 400, default value is 31.
+   */
+  height?: number;
+}
+
 function toXml(data: Rss): string {
   const rss = {
     rss: {
@@ -214,6 +243,13 @@ function toXml(data: Rss): string {
               "@type": "application/rss+xml",
             }
           : undefined,
+        image: {
+          url: data.image?.url,
+          title: data.title,
+          link: data.link,
+          width: data.image?.width,
+          height: data.image?.height,
+        },
         item: data.items.map((item) => ({
           title: item.title,
           link: item.link,
@@ -244,6 +280,11 @@ export const defaultRssConfig: Rss = {
   copyright: "Copyright 2022, Wesley Rocha",
   managingEditor: "hi@wdsrocha.com (Wesley Rocha)",
   webMaster: "hi@wdsrocha.com (Wesley Rocha)",
+  image: {
+    url: `${BASE_URL}/favicon-32x32.png`,
+    width: 32,
+    height: 32,
+  },
   items: [],
 };
 
