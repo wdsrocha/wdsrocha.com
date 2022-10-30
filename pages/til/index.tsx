@@ -2,14 +2,18 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import React from "react";
-import { getAllPosts, Post } from "../../lib/api";
+import { Post, getPosts, pickPostFields } from "../../lib/posts";
 
-export const getStaticProps: GetStaticProps<{ posts: Post[] }> = async () => {
-  const posts = await getAllPosts("til", ["title", "slug", "date"]);
+export const getStaticProps: GetStaticProps<{
+  posts: Pick<Post, "title" | "slug" | "date">[];
+}> = async () => {
+  const posts = await getPosts();
 
   return {
     props: {
-      posts,
+      posts: posts.map((post) =>
+        pickPostFields(post, ["title", "slug", "date"])
+      ),
     },
   };
 };

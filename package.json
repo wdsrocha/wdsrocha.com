@@ -24,7 +24,8 @@
     "remark": "^14.0.1",
     "remark-html": "^15.0.0",
     "remark-prism": "^1.3.6",
-    "windy-radix-typography": "^0.1.0"
+    "windy-radix-typography": "^0.1.0",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^11.1.2",

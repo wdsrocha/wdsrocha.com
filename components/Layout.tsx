@@ -15,15 +15,17 @@ interface Props {
 export const Layout = ({ children }: Props) => {
   return (
     <div className="mx-auto max-w-4xl flex flex-col h-screen pt-4 px-4">
-      <header className="flex justify-between flex-col sm:items-center sm:flex-row">
-        <Link href="/" passHref>
-          <a className="text-2xl font-semibold text-primary-11 hover:underline underline-offset-4">
-            @wdsrocha
-          </a>
-        </Link>
+      <header className="flex flex-wrap justify-between items-center">
+        <div className="mr-8">
+          <Link href="/" passHref>
+            <a className="text-2xl font-semibold text-primary-11 hover:underline underline-offset-4">
+              @wdsrocha
+            </a>
+          </Link>
+        </div>
         <Link href="/til" passHref>
           <a className="text-2xl font-semibold text-primary-11 hover:underline underline-offset-4">
-            Today I Learned
+            TIL
           </a>
         </Link>
       </header>

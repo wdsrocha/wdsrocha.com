@@ -1,3 +1,9 @@
+---
+description: "I'm Wesley da Silva Rocha, a Brazilian software engineer.
+Currently, I'm creating DOJO Online Judge Orchestrator and improving the
+Checkout experience of thousands of ecommerces at VTEX."
+---
+
 # Hi 👋
 
 I'm Wesley da Silva Rocha, a Brazilian software engineer. Currently, I'm

@@ -7,10 +7,10 @@ import {
 import { NextSeo } from "next-seo";
 import React from "react";
 import { ContentRenderer } from "../../components/ContentRenderer";
-import { getAllPosts, getPostBySlug, Post } from "../../lib/api";
+import { Post, getPosts, getPostBySlug } from "../../lib/posts";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts("til", ["slug"]);
+  const posts = await getPosts();
 
   return {
     fallback: false,
@@ -27,13 +27,7 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
     return { notFound: true };
   }
 
-  const post = await getPostBySlug("til", params?.slug, [
-    "title",
-    "description",
-    "date",
-    "slug",
-    "content",
-  ]);
+  const post = await getPostBySlug(params.slug);
 
   return {
     props: {
@@ -54,19 +48,6 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         title={`${title} | TIL`}
         description={description}
         canonical={canonicalUrl}
-        openGraph={{
-          title,
-          description,
-          images: [
-            {
-              url: "https://www.wdsrocha.com/apple-touch-icon.png",
-              width: 180,
-              height: 180,
-              alt: "Capital letter W written in cursive form along side a pink background.",
-              type: "image/png",
-            },
-          ],
-        }}
         twitter={{
           cardType: "summary",
           handle: "@wdsrocha",

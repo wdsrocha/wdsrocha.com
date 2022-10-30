@@ -27,4 +27,15 @@ export const defaultSeoConfig: ComponentProps<typeof NextSeo> = {
   defaultTitle: "Wesley Rocha (@wdsrocha)",
   titleTemplate: "%s | @wdsrocha",
   additionalLinkTags: [...faviconLinkTags],
+  openGraph: {
+    images: [
+      {
+        url: "https://www.wdsrocha.com/apple-touch-icon.png",
+        width: 180,
+        height: 180,
+        alt: "Capital letter W written in cursive form along side a pink background.",
+        type: "image/png",
+      },
+    ],
+  },
 };
