@@ -7,6 +7,7 @@ import {
 import { NextSeo } from "next-seo";
 import React from "react";
 import { ContentRenderer } from "../../components/ContentRenderer";
+import { BASE_URL } from "../../lib/constants";
 import { Post, getPosts, getPostBySlug } from "../../lib/posts";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -40,7 +41,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
 }) => {
   const { slug, title, description, date, content } = post;
-  const canonicalUrl = `https://www.wdsrocha.com/til/${slug}`;
+  const canonicalUrl = `${BASE_URL}/til/${slug}`;
 
   return (
     <>

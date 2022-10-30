@@ -3,10 +3,13 @@ import { NextSeo } from "next-seo";
 import Link from "next/link";
 import React from "react";
 import { Post, getPosts, pickPostFields } from "../../lib/posts";
+import { generateRssFeed } from "../../lib/rss";
 
 export const getStaticProps: GetStaticProps<{
   posts: Pick<Post, "title" | "slug" | "date">[];
 }> = async () => {
+  await generateRssFeed();
+
   const posts = await getPosts();
 
   return {

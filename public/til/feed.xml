@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Wesley Rocha | TIL</title>
+    <link>https://www.wdsrocha.com/til</link>
+    <description>Collection of brief documented learnings</description>
+    <language>en</language>
+    <copyright>Copyright 2022, Wesley Rocha</copyright>
+    <managingEditor>hi@wdsrocha.com (Wesley Rocha)</managingEditor>
+    <webMaster>hi@wdsrocha.com (Wesley Rocha)</webMaster>
+    <atom:link href="https://www.wdsrocha.com/til/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Symbol protects React from XSS attacks</title>
+      <link>https://www.wdsrocha.com/til/symbol-protects-react-from-xss-attacks</link>
+      <description>If your server has a hole that lets the user store an arbitrary JSON object while the client code expects a string, React would be vulnerable to an XSS attack.</description>
+      <guid>https://www.wdsrocha.com/til/symbol-protects-react-from-xss-attacks</guid>
+      <pubDate>Sat, 29 Oct 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;&lt;code&gt;Symbol&lt;/code&gt; protects React from XSS attacks&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If your server has a hole that lets the user store an arbitrary JSON object
+while the client code expects a string, React would be vulnerable to an XSS
+attack.&lt;/p&gt;
+&lt;p&gt;The fix in React 0.14 was to tag every React element with a Symbol.
+So even if the server has a security hole and returns JSON instead of text,
+that JSON can’t include &lt;code&gt;Symbol.for('react.element')&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Source: &lt;a href="https://overreacted.io/why-do-react-elements-have-typeof-property/"&gt;https://overreacted.io/why-do-react-elements-have-typeof-property/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If the browser doesen't support Symbols (what??), React just uses an arbitrary
+number instead. The chosen number is &lt;code&gt;0xeac7&lt;/code&gt;. Why this number?
+&lt;a href="https://github.com/facebook/react/pull/4832/files#r39431415"&gt;It has a special property&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>location.replace() removes current page from the browser history</title>
+      <link>https://www.wdsrocha.com/til/location-replace-removes-current-page-from-the-browser-history</link>
+      <description>Found out about this after clicking an exteral link in a page and not being able to go back to the source. How could a link behave like that? Turns out that it was a button with location.replace() for its onClick event.</description>
+      <guid>https://www.wdsrocha.com/til/location-replace-removes-current-page-from-the-browser-history</guid>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;&lt;code&gt;location.replace()&lt;/code&gt; removes current page from the browser history&lt;/h1&gt;
+&lt;p&gt;Found out about this after clicking an exteral link in a page and not being able
+to go back to the source. How could a link behave like that? Turns out that it
+was a button with &lt;code&gt;location.replace()&lt;/code&gt; for its &lt;code&gt;onClick&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;Thats why you should use anchors for links instead of buttons.
+&lt;a href="https://heydonworks.com/article/reinventing-the-hyperlink/" title="Reinveinting the Hyperlink | heydonworks"&gt;Or a div&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Emails can contain apostrophes</title>
+      <link>https://www.wdsrocha.com/til/emails-can-contain-apostrophes</link>
+      <description>As stated in RFC 3696, apostrophes can be used before the @</description>
+      <guid>https://www.wdsrocha.com/til/emails-can-contain-apostrophes</guid>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;Emails can contain apostrophes&lt;/h1&gt;
+&lt;p&gt;As stated in &lt;a href="https://www.rfc-editor.org/rfc/rfc3696"&gt;RFC 3696&lt;/a&gt;, apostrophes can be used before the &lt;code&gt;@&lt;/code&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>yarn run displays all available commands</title>
+      <link>https://www.wdsrocha.com/til/yarn-run-displays-all-available-commands</link>
+      <description>yarn run will display all available binary scripts and user defined scripts from the package.json file.</description>
+      <guid>https://www.wdsrocha.com/til/yarn-run-displays-all-available-commands</guid>
+      <pubDate>Tue, 27 Sep 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;&lt;code&gt;yarn run&lt;/code&gt; displays all available commands&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;yarn run&lt;/code&gt; will display all available binary scripts and user defined scripts
+from the &lt;code&gt;package.json&lt;/code&gt; file. Also, the same works for &lt;code&gt;npm run&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;For the following &lt;code&gt;package.json&lt;/code&gt; (only scripts):&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-json"&gt;&lt;code class="language-json"&gt;&lt;span class="token property"&gt;"scripts"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token punctuation"&gt;{&lt;/span&gt;
+  &lt;span class="token property"&gt;"build"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token string"&gt;"build-storybook"&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+  &lt;span class="token property"&gt;"lint"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token string"&gt;"eslint --ext js,jsx,ts,tsx ."&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+  &lt;span class="token property"&gt;"storybook"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token string"&gt;"start-storybook --no-open -p 6006"&lt;/span&gt;
+&lt;span class="token punctuation"&gt;}&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It will look something like that:&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-unknown"&gt;&lt;code class="language-unknown"&gt;$ yarn run
+yarn run v1.22.19
+info Commands available from binary scripts: autoprefixer, build-storybook, eslint, start-storybook, storybook-server, tailwind, tailwindcss, tsc, tsserver, acorn, ansi-html, ansi-to-html, atob, browserslist, c8, chrome-debug, color-support, cssesc, cypress, default-browser-id, detect, detect-port, detective, errno, esbuild, escodegen, esgenerate, eslint-config-prettier, esparse, esvalidate, extract-zip, handlebars, he, html-minifier-terser, husky, import-local-fixture, is-ci, is-docker, jest, js-yaml, jsesc, json5, lhci, lighthouse, lint-staged, loose-envify, lz-string, miller-rabin, mime, mkdirp, nanoid, next, node-which, opener, parser, prettier, ps-tree, qrcode, raven, rc, react-docgen, regjsparser, rimraf, sane, semver, server-test, sha.js, smokehouse, sshpk-conv, sshpk-sign, sshpk-verify, start-server-and-test, start-test, strip-indent, terser, tree-kill, turbo, uglifyjs, uuid, wait-on, watch, webpack, webpack-bundle-analyzer, x-default-browser
+info Project commands
+   - build
+      build-storybook
+   - lint
+      eslint --ext js,jsx,ts,tsx .
+   - storybook
+      start-storybook --no-open -p 6006
+question Which command would you like to run?:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content:encoded>
+    </item>
+  </channel>
+</rss>

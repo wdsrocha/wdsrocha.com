@@ -1,5 +1,6 @@
 import { DefaultSeo, NextSeo } from "next-seo";
 import { ComponentProps } from "react";
+import { BASE_URL } from "./constants";
 
 const faviconLinkTags: ComponentProps<typeof DefaultSeo>["additionalLinkTags"] =
   [
@@ -30,7 +31,7 @@ export const defaultSeoConfig: ComponentProps<typeof NextSeo> = {
   openGraph: {
     images: [
       {
-        url: "https://www.wdsrocha.com/apple-touch-icon.png",
+        url: `${BASE_URL}/apple-touch-icon.png`,
         width: 180,
         height: 180,
         alt: "Capital letter W written in cursive form along side a pink background.",
