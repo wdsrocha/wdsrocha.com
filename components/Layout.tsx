@@ -6,6 +6,7 @@ import {
   RiTelegramFill,
   RiTwitterFill,
   RiMailFill,
+  RiRssFill,
 } from "react-icons/ri";
 
 interface Props {
@@ -62,6 +63,11 @@ export const Layout = ({ children }: Props) => {
         <a className="hover:text-primary-12" href="mailto:hi@wdsrocha.com">
           <RiMailFill />
         </a>
+        <Link href="/feed">
+          <a className="hover:text-primary-12">
+            <RiRssFill />
+          </a>
+        </Link>
       </footer>
     </div>
   );

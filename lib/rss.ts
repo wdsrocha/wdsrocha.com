@@ -14,7 +14,7 @@ dayjs.extend(localizedFormat);
  *
  * @see {@link https://www.rssboard.org/rss-specification}
  */
-interface Rss {
+export interface Rss {
   /**
    * The name of the channel. It's how people refer to your service. If you have
    * an HTML website that contains the same information as your RSS file, the
@@ -115,7 +115,7 @@ interface Rss {
  * Types that describe a RSS item. This would be equivalent of a "blog post
  * object"
  */
-interface Item {
+export interface Item {
   /**
    * The title of the item.
    *
@@ -235,18 +235,23 @@ function toXml(data: Rss): string {
 
 const RFC822_FORMAT_WITHOUT_TZ = "ddd, DD MMM YYYY HH:mm:ss";
 
+export const defaultRssConfig: Rss = {
+  title: "Wesley Rocha | TIL",
+  link: `${BASE_URL}/til`,
+  atomLink: `${BASE_URL}/til/rss.xml`,
+  description: "Collection of brief documented learnings",
+  language: "en",
+  copyright: "Copyright 2022, Wesley Rocha",
+  managingEditor: "hi@wdsrocha.com (Wesley Rocha)",
+  webMaster: "hi@wdsrocha.com (Wesley Rocha)",
+  items: [],
+};
+
 export async function generateRssFeed(): Promise<void> {
   const posts = await getPosts();
 
   const data: Rss = {
-    title: "Wesley Rocha | TIL",
-    link: `${BASE_URL}/til`,
-    atomLink: `${BASE_URL}/til/rss.xml`,
-    description: "Collection of brief documented learnings",
-    language: "en",
-    copyright: "Copyright 2022, Wesley Rocha",
-    managingEditor: "hi@wdsrocha.com (Wesley Rocha)",
-    webMaster: "hi@wdsrocha.com (Wesley Rocha)",
+    ...defaultRssConfig,
     items: posts.map((post) => ({
       title: post.title,
       description: post.description ?? "",
