@@ -9,6 +9,13 @@
     <managingEditor>hi@wdsrocha.com (Wesley Rocha)</managingEditor>
     <webMaster>hi@wdsrocha.com (Wesley Rocha)</webMaster>
     <atom:link href="https://www.wdsrocha.com/til/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://www.wdsrocha.com/favicon-32x32.png</url>
+      <title>Wesley Rocha | TIL</title>
+      <link>https://www.wdsrocha.com/til</link>
+      <width>32</width>
+      <height>32</height>
+    </image>
     <item>
       <title>Symbol protects React from XSS attacks</title>
       <link>https://www.wdsrocha.com/til/symbol-protects-react-from-xss-attacks</link>
