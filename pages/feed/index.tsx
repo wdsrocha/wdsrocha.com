@@ -27,12 +27,12 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         description="Subscribe to different sections of this website."
         canonical={canonicalUrl}
       />
-      <header className="prose sm:prose-xl mb-8">
+      <header className="prose mb-8 sm:prose-xl">
         <h1>RSS Feeds</h1>
         <p>
           Subscribe to different sections of this website.{" "}
           <a
-            className="text-primary-11 hover:no-underline underline-offset-4"
+            className="text-primary-11 underline-offset-4 hover:no-underline"
             href="https://aboutfeeds.com/"
           >
             Learn more about feeds
@@ -42,24 +42,24 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </header>
       <ol className="space-y-4">
         <li key="blog">
-          <div className="flex items-center text-xl sm:text-2xl font-bold space-x-2 text-gray-11">
+          <div className="flex items-center space-x-2 text-xl font-bold text-gray-11 sm:text-2xl">
             <h2>Wesley Rocha | Blog</h2>
             <RiRssFill />
           </div>
-          <p className="text-sm sm:text-base text-gray-700">
+          <p className="text-sm text-gray-11 sm:text-base">
             Tech blog under construction
           </p>
         </li>
         <li key="til">
-          <div className="flex items-center text-xl sm:text-2xl font-bold space-x-2 text-primary-11">
+          <div className="flex items-center space-x-2 text-xl font-bold text-primary-11 sm:text-2xl">
             <Link href={"/til/feed.xml"}>
-              <a className="hover:underline underline-offset-4">
+              <a className="underline-offset-4 hover:underline">
                 <h2>{feedConfig.title}</h2>
               </a>
             </Link>
             <RiRssFill />
           </div>
-          <p className="text-sm sm:text-base text-gray-700">
+          <p className="text-sm text-gray-700 sm:text-base">
             {feedConfig.description}
           </p>
         </li>

@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import React from "react";
+import { formatDate } from "../../lib/common";
 import { BASE_URL } from "../../lib/constants";
 import { Post, getPosts, pickPostFields } from "../../lib/posts";
 import { generateRssFeed } from "../../lib/rss";
@@ -57,12 +58,11 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 </Link>
               </h2>
               <p>
-                Published on{" "}
                 <time
-                  className="text-sm text-gray-700 sm:text-base"
+                  className="text-sm text-gray-11 sm:text-base"
                   dateTime={post.date}
                 >
-                  {post.date}
+                  {formatDate(post.date)}
                 </time>
               </p>
             </article>

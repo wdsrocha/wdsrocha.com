@@ -17,6 +17,15 @@
       <height>32</height>
     </image>
     <item>
+      <title>Hello, Tina!</title>
+      <link>https://www.wdsrocha.com/til/hello-tina</link>
+      <description>Testing Tina CMS!</description>
+      <guid>https://www.wdsrocha.com/til/hello-tina</guid>
+      <pubDate>Thu, 02 Mar 2023 12:58:52 GMT</pubDate>
+      <content:encoded>&lt;p&gt;Testing Tina CMS! Check it out: &lt;tina.io&gt;&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
       <title>Symbol protects React from XSS attacks</title>
       <link>https://www.wdsrocha.com/til/symbol-protects-react-from-xss-attacks</link>
       <description>If your server has a hole that lets the user store an arbitrary JSON object while the client code expects a string, React would be vulnerable to an XSS attack.</description>

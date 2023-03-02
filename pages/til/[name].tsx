@@ -10,9 +10,7 @@ import { ContentRenderer } from "../../components/ContentRenderer";
 import { BASE_URL } from "../../lib/constants";
 import { Post, getPosts, getPostByFilename } from "../../lib/posts";
 import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-
-dayjs.extend(localizedFormat);
+import { formatDate } from "../../lib/common";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
@@ -47,8 +45,6 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const { name, title, description, date, content } = post;
   const canonicalUrl = `${BASE_URL}/til/${name}`;
 
-  const prettyDate = dayjs(post.date, "YYYY-MM-DD").format("dddd, DD MMM YYYY");
-
   return (
     <>
       <NextSeo
@@ -62,7 +58,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         }}
       />
       <p className="text-base italic text-gray-11 sm:text-xl">
-        Published on <time dateTime={date}>{prettyDate}</time>
+        Published on <time dateTime={date}>{formatDate(date)}</time>
       </p>
       <ContentRenderer>{content}</ContentRenderer>
     </>
