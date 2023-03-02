@@ -1,7 +1,6 @@
 ---
 title: "Emails can contain apostrophes"
-slug: "emails-can-contain-apostrophes"
-date: "2022-10-12"
+date: "2022-10-12T04:00:00.000Z"
 description: "As stated in RFC 3696, apostrophes can be used before the @"
 ---
 
