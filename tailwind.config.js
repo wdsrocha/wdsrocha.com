@@ -10,11 +10,7 @@ const primary = Object.entries(radixColors.pink).reduce(
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./components/**/*.{js,jsx,ts,tsx,html}",
-    "./pages/**/*.{js,jsx,ts,tsx,html}",
-    "./.next/**/*.{js,jsx,ts,tsx,html}",
-  ],
+  content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
   theme: {
     extend: {
       colors: {
