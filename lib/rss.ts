@@ -296,8 +296,8 @@ export async function generateRssFeed(): Promise<void> {
     items: posts.map((post) => ({
       title: post.title,
       description: post.description ?? "",
-      link: `${BASE_URL}/til/${post.slug}`,
-      guid: `${BASE_URL}/til/${post.slug}`,
+      link: `${BASE_URL}/til/${post.name}`,
+      guid: `${BASE_URL}/til/${post.name}`,
       pubDate: `${dayjs(post.date, "YYYY-MM-DD").format(
         RFC822_FORMAT_WITHOUT_TZ
       )} GMT`,

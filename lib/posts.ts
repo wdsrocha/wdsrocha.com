@@ -47,20 +47,18 @@ function getContextualErrorMap(filename: string): z.ZodErrorMap {
   };
 }
 
-const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
-
-const Post = z
+const postScheme = z
   .object({
+    name: z.string(), // filename without extension
     title: z.string(),
-    slug: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, ""),
-    date: z.string().regex(DATE_PATTERN),
-    lastUpdate: z.string().regex(DATE_PATTERN).optional(),
+    date: z.string().datetime(),
+    lastUpdate: z.string().datetime().optional(),
     description: z.string().optional(),
     content: z.string(),
   })
   .strict();
 
-export type Post = z.infer<typeof Post>;
+export type Post = z.infer<typeof postScheme>;
 
 export function pickPostFields<Field extends keyof Post>(
   post: Post,
@@ -76,22 +74,16 @@ export async function getPostByFilename(filename: string): Promise<Post> {
   const fullPath = path.join(process.cwd(), "contents/til/", filename);
   const file = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(file);
-  const post = Post.parse(
+  const post = postScheme.parse(
     {
       ...data,
+      name: path.parse(filename).name,
       content: await markdownToHtml(content),
     },
     { errorMap: getContextualErrorMap(filename) }
   );
 
   return post;
-}
-
-export async function getPostBySlug(slug: string): Promise<Post> {
-  const filename = fs
-    .readdirSync(path.join(process.cwd(), "contents/til"))
-    .find((filename) => filename.includes(slug));
-  return getPostByFilename(filename ?? "");
 }
 
 export async function getPosts(): Promise<Post[]> {

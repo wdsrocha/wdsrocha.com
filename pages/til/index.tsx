@@ -7,7 +7,7 @@ import { Post, getPosts, pickPostFields } from "../../lib/posts";
 import { generateRssFeed } from "../../lib/rss";
 
 export const getStaticProps: GetStaticProps<{
-  posts: Pick<Post, "title" | "slug" | "date">[];
+  posts: Pick<Post, "title" | "name" | "date">[];
 }> = async () => {
   await generateRssFeed();
 
@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       posts: posts.map((post) =>
-        pickPostFields(post, ["title", "slug", "date"])
+        pickPostFields(post, ["title", "name", "date"])
       ),
     },
   };
@@ -33,12 +33,12 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         description="Collection of brief documented learnings."
         canonical={canonicalUrl}
       />
-      <header className="prose sm:prose-xl mb-8">
+      <header className="prose mb-8 sm:prose-xl">
         <h1>TIL – Today I Learned</h1>
         <p>
           Collection of brief documented learnings.{" "}
           <Link href={"/til/feed.xml"}>
-            <a className="text-primary-11 hover:no-underline underline-offset-4">
+            <a className="text-primary-11 underline-offset-4 hover:no-underline">
               Subscribe to RSS
             </a>
           </Link>
@@ -47,11 +47,11 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </header>
       <ol className="space-y-4">
         {posts.map((post) => (
-          <li key={post.slug}>
+          <li key={post.name}>
             <article>
-              <h2 className="text-xl sm:text-2xl font-bold">
-                <Link as={`/til/${post.slug}`} href={"/til/[slug]"}>
-                  <a className="text-primary-11 hover:underline underline-offset-4">
+              <h2 className="text-xl font-bold sm:text-2xl">
+                <Link as={`/til/${post.name}`} href={"/til/[name]"}>
+                  <a className="text-primary-11 underline-offset-4 hover:underline">
                     {post.title}
                   </a>
                 </Link>
@@ -59,7 +59,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               <p>
                 Published on{" "}
                 <time
-                  className="text-sm sm:text-base text-gray-700"
+                  className="text-sm text-gray-700 sm:text-base"
                   dateTime={post.date}
                 >
                   {post.date}

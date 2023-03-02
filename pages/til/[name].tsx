@@ -8,15 +8,19 @@ import { NextSeo } from "next-seo";
 import React from "react";
 import { ContentRenderer } from "../../components/ContentRenderer";
 import { BASE_URL } from "../../lib/constants";
-import { Post, getPosts, getPostBySlug } from "../../lib/posts";
+import { Post, getPosts, getPostByFilename } from "../../lib/posts";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+
+dayjs.extend(localizedFormat);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
 
   return {
     fallback: false,
-    paths: posts.map(({ slug }) => ({
-      params: { slug },
+    paths: posts.map(({ name }) => ({
+      params: { name },
     })),
   };
 };
@@ -24,11 +28,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
   params,
 }) => {
-  if (typeof params?.slug !== "string") {
+  if (typeof params?.name !== "string") {
     return { notFound: true };
   }
 
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostByFilename(`${params.name}.md`);
 
   return {
     props: {
@@ -40,8 +44,10 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
 }) => {
-  const { slug, title, description, date, content } = post;
-  const canonicalUrl = `${BASE_URL}/til/${slug}`;
+  const { name, title, description, date, content } = post;
+  const canonicalUrl = `${BASE_URL}/til/${name}`;
+
+  const prettyDate = dayjs(post.date, "YYYY-MM-DD").format("dddd, DD MMM YYYY");
 
   return (
     <>
@@ -55,8 +61,8 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
           site: "@wdsrocha",
         }}
       />
-      <p className="text-gray-11 text-base sm:text-xl italic">
-        Published on <time dateTime={date}>{date}</time>
+      <p className="text-base italic text-gray-11 sm:text-xl">
+        Published on <time dateTime={date}>{prettyDate}</time>
       </p>
       <ContentRenderer>{content}</ContentRenderer>
     </>
