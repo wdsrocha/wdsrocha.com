@@ -32,8 +32,8 @@ So even if the server has a security hole and returns JSON instead of text,
 that JSON can’t include &lt;code&gt;Symbol.for('react.element')&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Source: &lt;a href="https://overreacted.io/why-do-react-elements-have-typeof-property/"&gt;https://overreacted.io/why-do-react-elements-have-typeof-property/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;If the browser doesen't support Symbols (what??), React just uses an arbitrary
-number instead. The chosen number is &lt;code&gt;0xeac7&lt;/code&gt;. Why this number?
+&lt;p&gt;If the browser doesen't support Symbols (what??), React could use an arbitrary
+value instead. The chosen value was the nummber &lt;code&gt;0xeac7&lt;/code&gt;. Why this number?
 &lt;a href="https://github.com/facebook/react/pull/4832/files#r39431415"&gt;It has a special property&lt;/a&gt;.&lt;/p&gt;
 </content:encoded>
     </item>
