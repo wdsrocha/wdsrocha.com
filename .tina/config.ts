@@ -23,9 +23,6 @@ export default defineConfig({
         name: "til",
         path: "contents/til",
         ui: {
-          router: ({ document }) => {
-            return `/til/${document._sys.filename}`;
-          },
           filename: {
             slugify: (values) => {
               return (values?.title ?? "")?.toLowerCase().replace(/ /g, "-");
@@ -37,20 +34,18 @@ export default defineConfig({
         },
         fields: [
           {
-            type: "string",
-            label: "Title",
-            name: "title",
-            required: true,
-            isTitle: true,
+            type: "rich-text",
+            label: "Content",
+            name: "content",
+            isBody: true,
           },
           {
             type: "string",
-            label: "Description",
-            name: "description",
-            description: "Brief description used in SEO and RSS",
-            ui: {
-              component: "textarea",
-            },
+            label: "Title",
+            name: "title",
+            description: "Should match content H1",
+            required: true,
+            isTitle: true,
           },
           {
             type: "datetime",
@@ -60,9 +55,9 @@ export default defineConfig({
           },
           {
             type: "string",
-            label: "Content",
-            name: "body",
-            isBody: true,
+            label: "Description",
+            name: "description",
+            description: "Brief description used in SEO and RSS",
             ui: {
               component: "textarea",
             },
