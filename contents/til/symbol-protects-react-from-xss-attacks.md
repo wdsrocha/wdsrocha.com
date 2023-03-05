@@ -5,6 +5,7 @@ lastUpdate: "2022-11-01T04:00:00.000Z"
 description: "If your server has a hole that lets the user store an arbitrary
 JSON object while the client code expects a string, React would be vulnerable to
 an XSS attack."
+published: true
 ---
 
 # `Symbol` protects React from XSS attacks

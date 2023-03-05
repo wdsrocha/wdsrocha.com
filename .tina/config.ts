@@ -22,6 +22,7 @@ export default defineConfig({
         label: "TIL Posts",
         name: "til",
         path: "contents/til",
+        format: "md",
         ui: {
           filename: {
             slugify: (values) => {
@@ -30,6 +31,7 @@ export default defineConfig({
           },
           defaultItem: () => ({
             date: new Date().toISOString(),
+            published: false,
           }),
         },
         fields: [
@@ -61,6 +63,11 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "boolean",
+            name: "published",
+            label: "Publish?",
           },
         ],
       },

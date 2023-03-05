@@ -1,8 +1,10 @@
 ---
-title: "yarn run displays all available commands"
+title: yarn run displays all available commands
 date: "2022-09-27T04:00:00.000Z"
-description: "yarn run will display all available binary scripts and user
-defined scripts from the package.json file."
+description: >-
+  yarn run will display all available binary scripts and user defined scripts
+  from the package.json file.
+published: true
 ---
 
 # `yarn run` displays all available commands

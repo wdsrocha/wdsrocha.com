@@ -55,6 +55,7 @@ const postScheme = z
     lastUpdate: z.string().datetime().optional(),
     description: z.string().optional(),
     content: z.string(),
+    published: z.boolean(),
   })
   .strict();
 
@@ -86,6 +87,7 @@ export async function getPostByFilename(filename: string): Promise<Post> {
   return post;
 }
 
+// Returns only the published ones!
 export async function getPosts(): Promise<Post[]> {
   const promises = fs
     .readdirSync(path.join(process.cwd(), "contents/til"))
@@ -94,5 +96,7 @@ export async function getPosts(): Promise<Post[]> {
 
   const posts = await Promise.all(promises);
 
-  return posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+  return posts
+    .filter((post) => post.published)
+    .sort((a, b) => (a.date > b.date ? -1 : 1));
 }
