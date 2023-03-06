@@ -1,7 +1,7 @@
 ---
 title: Inserting visual separators with Tailwind
 date: '2023-03-05T22:13:10.905Z'
-published: false
+published: true
 ---
 
 # Inserting visual separators with Tailwind
