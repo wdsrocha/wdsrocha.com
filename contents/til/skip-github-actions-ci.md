@@ -9,4 +9,4 @@ published: true
 
 Add `[no ci]` to a commit message and it will skip GitHub CI.
 
-There are exceptions and more ways to consistently skip CI for things like updates in markdown files. These are explained in the [official documentation](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs "")
+There are exceptions and more ways to consistently skip CI for things like updates in markdown files. These are explained in the [official documentation](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs "").
