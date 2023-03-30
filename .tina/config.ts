@@ -19,6 +19,35 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        label: "Home",
+        name: "home",
+        path: "contents/home",
+        format: "md",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "rich-text",
+            label: "Content",
+            name: "content",
+            isBody: true,
+          },
+          {
+            type: "string",
+            label: "Description",
+            name: "description",
+            description: "Brief description used in SEO and RSS",
+            ui: {
+              component: "textarea",
+            },
+          },
+        ],
+      },
+      {
         label: "TIL Posts",
         name: "til",
         path: "contents/til",

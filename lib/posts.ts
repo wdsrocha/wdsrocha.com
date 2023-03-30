@@ -24,7 +24,7 @@ const Home = z
 export type Home = z.infer<typeof Home>;
 
 export async function getHome() {
-  const fullPath = path.join(process.cwd(), "contents/home.md");
+  const fullPath = path.join(process.cwd(), "contents/home/home.md");
   const file = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(file);
   const home = Home.parse({
