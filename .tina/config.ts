@@ -48,6 +48,59 @@ export default defineConfig({
         ],
       },
       {
+        label: "Blog Posts",
+        name: "blog",
+        path: "contents/blog",
+        format: "md",
+        ui: {
+          filename: {
+            slugify: (values) => {
+              return (values?.title ?? "")?.toLowerCase().replace(/ /g, "-");
+            },
+          },
+          defaultItem: () => ({
+            date: new Date().toISOString(),
+            published: false,
+          }),
+        },
+        fields: [
+          {
+            type: "rich-text",
+            label: "Content",
+            name: "content",
+            isBody: true,
+          },
+          {
+            type: "string",
+            label: "Title",
+            name: "title",
+            description: "Should match content H1",
+            required: true,
+            isTitle: true,
+          },
+          {
+            type: "datetime",
+            required: true,
+            name: "date",
+            label: "Created at",
+          },
+          {
+            type: "string",
+            label: "Description",
+            name: "description",
+            description: "Brief description used in SEO and RSS",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "boolean",
+            name: "published",
+            label: "Publish?",
+          },
+        ],
+      },
+      {
         label: "TIL Posts",
         name: "til",
         path: "contents/til",
