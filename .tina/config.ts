@@ -2,6 +2,19 @@ import { defineConfig } from "tinacms";
 
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
 
+function customSlugify(text: string | undefined) {
+  return (text ?? "")
+    .toString() // Cast to string (optional)
+    .normalize("NFKD") // The normalize() using NFKD method returns the Unicode Normalization Form of a given string.
+    .toLowerCase() // Convert the string to lowercase letters
+    .trim() // Remove whitespace from both sides of a string (optional)
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\_/g, "-") // Replace _ with -
+    .replace(/\-\-+/g, "-") // Replace multiple - with single -
+    .replace(/\-$/g, ""); // Remove trailing -
+}
+
 export default defineConfig({
   branch,
   clientId: process.env.TINA_PUBLIC_CLIENT_ID ?? null,
@@ -54,9 +67,7 @@ export default defineConfig({
         format: "md",
         ui: {
           filename: {
-            slugify: (values) => {
-              return (values?.title ?? "")?.toLowerCase().replace(/ /g, "-");
-            },
+            slugify: (values) => customSlugify(values.title),
           },
           defaultItem: () => ({
             date: new Date().toISOString(),
@@ -108,7 +119,12 @@ export default defineConfig({
         ui: {
           filename: {
             slugify: (values) => {
-              return (values?.title ?? "")?.toLowerCase().replace(/ /g, "-");
+              const old = (values?.title ?? "")
+                ?.toLowerCase()
+                .replace(/ /g, "-");
+              const current = customSlugify(values.title);
+              console.log({ old, current });
+              return old;
             },
           },
           defaultItem: () => ({
