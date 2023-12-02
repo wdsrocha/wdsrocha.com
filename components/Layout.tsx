@@ -24,11 +24,15 @@ export const Layout = ({ children }: Props) => {
             </a>
           </Link>
         </div>
-        <Link href="/til" passHref>
-          <a className="text-2xl font-semibold text-primary-11 hover:underline underline-offset-4">
-            TIL
-          </a>
-        </Link>
+        <div className="flex items-center gap-x-2 text-2xl font-semibold text-primary-11 underline-offset-4 ">
+          <Link href="/blog" passHref>
+            <a className="hover:underline">Blog</a>
+          </Link>
+          <span aria-hidden={true}>•</span>
+          <Link href="/til" passHref>
+            <a className="hover:underline">TIL</a>
+          </Link>
+        </div>
       </header>
       <div className="flex-grow mb-8">
         <main className="mt-4 flex flex-col gap-4 bg-white py-8 px-4 sm:p-8 sm:mx-0 -mx-4 shadow-lg">
