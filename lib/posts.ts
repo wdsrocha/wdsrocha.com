@@ -71,8 +71,11 @@ export function pickPostFields<Field extends keyof Post>(
   );
 }
 
-export async function getPostByFilename(filename: string): Promise<Post> {
-  const fullPath = path.join(process.cwd(), "contents/til/", filename);
+export async function getPostByFilename(
+  filename: string,
+  dir: string
+): Promise<Post> {
+  const fullPath = path.join(process.cwd(), "contents", dir, filename);
   const file = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(file);
   const post = postScheme.parse(
@@ -88,11 +91,11 @@ export async function getPostByFilename(filename: string): Promise<Post> {
 }
 
 // Returns only the published ones!
-export async function getPosts(): Promise<Post[]> {
+export async function getPosts(dir: string): Promise<Post[]> {
   const promises = fs
-    .readdirSync(path.join(process.cwd(), "contents/til"))
+    .readdirSync(path.join(process.cwd(), "contents", dir))
     .filter((filename) => filename.endsWith(".md"))
-    .map((filename) => getPostByFilename(filename));
+    .map((filename) => getPostByFilename(filename, dir));
 
   const posts = await Promise.all(promises);
 

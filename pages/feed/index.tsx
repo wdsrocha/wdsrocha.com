@@ -4,14 +4,14 @@ import Link from "next/link";
 import React from "react";
 import { RiRssFill } from "react-icons/ri";
 import { BASE_URL } from "../../lib/constants";
-import { defaultRssConfig, Rss } from "../../lib/rss";
+import { rssConfig, Rss } from "../../lib/rss";
 
 export const getStaticProps: GetStaticProps<{
   feedConfig: Rss;
 }> = async () => {
   return {
     props: {
-      feedConfig: defaultRssConfig,
+      feedConfig: rssConfig("til"),
     },
   };
 };

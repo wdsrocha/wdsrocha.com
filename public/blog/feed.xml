@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Wesley Rocha | BLOG</title>
+    <link>https://www.wdsrocha.com/blog</link>
+    <description>Personal posts about anything</description>
+    <language>en</language>
+    <copyright>Copyright 2022, Wesley Rocha</copyright>
+    <managingEditor>hi@wdsrocha.com (Wesley Rocha)</managingEditor>
+    <webMaster>hi@wdsrocha.com (Wesley Rocha)</webMaster>
+    <atom:link href="https://www.wdsrocha.com/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://www.wdsrocha.com/favicon-32x32.png</url>
+      <title>Wesley Rocha | BLOG</title>
+      <link>https://www.wdsrocha.com/blog</link>
+      <width>32</width>
+      <height>32</height>
+    </image>
+    <item>
+      <title>[AoC 2023] Dia 1: Vencendo com Lookaround 👀</title>
+      <link>https://www.wdsrocha.com/blog/aoc-2023-dia-1-truque-de-regex</link>
+      <description>Ontem se iniciou mais um Advent of Code e dessa vez farei meu melhor para durar mais do que dois dias 🙏.
+
+O enunciado do primeiro desafio pode ser lido aqui: https://adventofcode.com/2023/day/1
+</description>
+      <guid>https://www.wdsrocha.com/blog/aoc-2023-dia-1-truque-de-regex</guid>
+      <pubDate>Sat, 02 Dec 2023 01:10:14 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;[AoC 2023] Dia 1: Vencendo com Lookaround 👀&lt;/h1&gt;
+&lt;p&gt;Ontem se iniciou mais um &lt;a href="https://adventofcode.com/" title="Advent of Code"&gt;Advent of Code&lt;/a&gt; e dessa vez farei meu melhor para durar mais do que dois dias 🙏&lt;/p&gt;
+&lt;p&gt;O enunciado do primeiro desafio pode ser lido aqui: &lt;a href="https://adventofcode.com/2023/day/1"&gt;https://adventofcode.com/2023/day/1&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Primeiro desafio&lt;/h2&gt;
+&lt;p&gt;Tranquilinho.&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-python"&gt;&lt;code class="language-python"&gt;&lt;span class="token keyword"&gt;import&lt;/span&gt; sys
+
+calibration_values &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;
+&lt;span class="token keyword"&gt;for&lt;/span&gt; line &lt;span class="token keyword"&gt;in&lt;/span&gt; sys&lt;span class="token punctuation"&gt;.&lt;/span&gt;stdin&lt;span class="token punctuation"&gt;:&lt;/span&gt;
+    digits &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;c &lt;span class="token keyword"&gt;for&lt;/span&gt; c &lt;span class="token keyword"&gt;in&lt;/span&gt; line &lt;span class="token keyword"&gt;if&lt;/span&gt; c&lt;span class="token punctuation"&gt;.&lt;/span&gt;isdigit&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;
+    &lt;span class="token comment"&gt;# Se for apenas um dígito, digits[-1] equivale à digits[0]&lt;/span&gt;
+    value &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token number"&gt;10&lt;/span&gt; &lt;span class="token operator"&gt;*&lt;/span&gt; &lt;span class="token builtin"&gt;int&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;digits&lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token number"&gt;0&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt; &lt;span class="token operator"&gt;+&lt;/span&gt; &lt;span class="token builtin"&gt;int&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;digits&lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token operator"&gt;-&lt;/span&gt;&lt;span class="token number"&gt;1&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    calibration_values&lt;span class="token punctuation"&gt;.&lt;/span&gt;append&lt;span class="token punctuation"&gt;(&lt;/span&gt;value&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+
+&lt;span class="token keyword"&gt;print&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token builtin"&gt;sum&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;calibration_values&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Segundo desafio&lt;/h2&gt;
+&lt;p&gt;Para contemplar dígitos por extenso além de dígitos numéricos, pensei em usar uma expressão regular.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/(\d|one|two|three|four|five|six|seven|eight|nine)/g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Parece simples, mas falha para o seguinte caso de teste.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;oneight&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;A resposta é &lt;code&gt;18&lt;/code&gt; (one, eight), mas a expressão só encontra &lt;code&gt;one&lt;/code&gt; , pois quando um padrão é encontrado a busca continua na posição onde parou (nesse caso seria na letra &lt;code&gt;i&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Para encontrar grupos sem "avançar" a posição podemos usar o &lt;em&gt;lookaround&lt;/em&gt;, que verifica (literalmente &lt;em&gt;look&lt;/em&gt; &lt;em&gt;around&lt;/em&gt; – olha ao redor) um determinado padrão antes de realizar um casamento. Nesse cenário em específico, podemos usar um &lt;em&gt;positive lookahead&lt;/em&gt; que se encarrega de verificar os próximos caracteres à frente. A sintaxe é &lt;code&gt;/(?=(padrão que vai ser olhado))/g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Logo, para consertar a expressão regular do desafio basta adicionar o &lt;em&gt;positive lookahead&lt;/em&gt; e voilà.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Se não estiver muito claro, sugiro brincar um pouco no &lt;a href="https://regex101.com/"&gt;regex101&lt;/a&gt; e verificar os tutoriais na seção de referências, lá em baixo.&lt;/p&gt;
+&lt;p&gt;Solução completa:&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-python"&gt;&lt;code class="language-python"&gt;&lt;span class="token keyword"&gt;import&lt;/span&gt; sys
+&lt;span class="token keyword"&gt;import&lt;/span&gt; re
+
+word_to_digit &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;{&lt;/span&gt;
+    &lt;span class="token string"&gt;"one"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;1&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"two"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;2&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"three"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;3&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"four"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;4&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"five"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;5&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt; 
+    &lt;span class="token string"&gt;"six"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;6&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"seven"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;7&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"eight"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;8&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+    &lt;span class="token string"&gt;"nine"&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt; &lt;span class="token number"&gt;9&lt;/span&gt;
+&lt;span class="token punctuation"&gt;}&lt;/span&gt;
+
+&lt;span class="token keyword"&gt;def&lt;/span&gt; &lt;span class="token function"&gt;to_numeric_digit&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;s&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt;
+    &lt;span class="token keyword"&gt;if&lt;/span&gt; s&lt;span class="token punctuation"&gt;.&lt;/span&gt;isdigit&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt;
+        &lt;span class="token keyword"&gt;return&lt;/span&gt; &lt;span class="token builtin"&gt;int&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;s&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;else&lt;/span&gt;&lt;span class="token punctuation"&gt;:&lt;/span&gt;
+        &lt;span class="token keyword"&gt;return&lt;/span&gt; word_to_digit&lt;span class="token punctuation"&gt;[&lt;/span&gt;s&lt;span class="token punctuation"&gt;]&lt;/span&gt;
+
+valid_digits &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token builtin"&gt;str&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;i&lt;span class="token punctuation"&gt;)&lt;/span&gt; &lt;span class="token keyword"&gt;for&lt;/span&gt; i &lt;span class="token keyword"&gt;in&lt;/span&gt; &lt;span class="token builtin"&gt;range&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token number"&gt;10&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt; &lt;span class="token operator"&gt;+&lt;/span&gt; &lt;span class="token builtin"&gt;list&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;word_to_digit&lt;span class="token punctuation"&gt;.&lt;/span&gt;keys&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+
+calibration_values &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;
+&lt;span class="token keyword"&gt;for&lt;/span&gt; line &lt;span class="token keyword"&gt;in&lt;/span&gt; sys&lt;span class="token punctuation"&gt;.&lt;/span&gt;stdin&lt;span class="token punctuation"&gt;:&lt;/span&gt;
+    pattern &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token string"&gt;r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))"&lt;/span&gt;
+    groups &lt;span class="token operator"&gt;=&lt;/span&gt; re&lt;span class="token punctuation"&gt;.&lt;/span&gt;findall&lt;span class="token punctuation"&gt;(&lt;/span&gt;pattern&lt;span class="token punctuation"&gt;,&lt;/span&gt; line&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;if&lt;/span&gt; groups&lt;span class="token punctuation"&gt;:&lt;/span&gt;
+        first_digit &lt;span class="token operator"&gt;=&lt;/span&gt; to_numeric_digit&lt;span class="token punctuation"&gt;(&lt;/span&gt;groups&lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token number"&gt;0&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+        last_digit &lt;span class="token operator"&gt;=&lt;/span&gt; to_numeric_digit&lt;span class="token punctuation"&gt;(&lt;/span&gt;groups&lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token operator"&gt;-&lt;/span&gt;&lt;span class="token number"&gt;1&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+        value &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token number"&gt;10&lt;/span&gt; &lt;span class="token operator"&gt;*&lt;/span&gt; first_digit &lt;span class="token operator"&gt;+&lt;/span&gt; last_digit
+        &lt;span class="token keyword"&gt;print&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;groups&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+        &lt;span class="token keyword"&gt;print&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;value&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+        calibration_values&lt;span class="token punctuation"&gt;.&lt;/span&gt;append&lt;span class="token punctuation"&gt;(&lt;/span&gt;value&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+
+&lt;span class="token keyword"&gt;print&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token builtin"&gt;sum&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;calibration_values&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Pós-resolução&lt;/h2&gt;
+&lt;p&gt;Um querido do Twitter resolveu da seguinte forma.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/7eda46096039ba5c4498c3ec1fa7f0528e4d67ba719e9dd0c44da3b64078f140.png" alt="Usuário Arnav Gupta (@championswimmer) demonstra sua solução no Twitter. A descrição do Tweet diz "Shittiest of hacks 😂😂😂" e tem uma imagem de uma parte de seu código. Todas as linhas consistem da utilização de uma função de "replace" trocando "one" por "o1ne", "two" por "t2wo" e assim por diante." title="Engenheiro sênior mais fraco."&gt;&lt;/p&gt;
+&lt;p&gt;Achei criativo e vi que outras pessoas fizeram da mesma forma. Justo, você pode usar um replace mas não pode simplesmente transformar "one" em 1, já que quebraria o mesmo caso de exemplo que citei antes. "oneight" viraria "1ight" ao invés de "18".&lt;/p&gt;
+&lt;p&gt;O que me surpreendeu é que o pessoal teve o trabalho de pensar em qual parte da string eles poderiam inserir o dígito de forma que o código funcionasse ao invés de simplesmente duplicar a string. "one" vira "one1one", "two" vira "two2two", etc...&lt;/p&gt;
+&lt;h2&gt;Referências&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Explicação leve sobre &lt;em&gt;lookaround&lt;/em&gt;: &lt;a href="https://mtsknn.fi/blog/how-to-do-overlapping-matches-with-regular-expressions/#:~:text=Turns%20out%20that%20when%20the,capture%20overlapping%20pairs%20of%20letters."&gt;How to do overlapping matches with regular expressions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Explicação pesada sobre &lt;em&gt;lookaround&lt;/em&gt;: &lt;a href="https://www.rexegg.com/regex-lookarounds.html"&gt;Mastering Lookahead and Lookbehind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tweet do malandro: &lt;a href="https://twitter.com/championswimmer/status/1730667285415948767"&gt;https://twitter.com/championswimmer/status/1730667285415948767&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+  </channel>
+</rss>

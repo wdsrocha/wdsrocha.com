@@ -10,9 +10,11 @@ import { generateRssFeed } from "../../lib/rss";
 export const getStaticProps: GetStaticProps<{
   posts: Pick<Post, "title" | "name" | "date">[];
 }> = async () => {
-  await generateRssFeed("til");
+  await generateRssFeed("blog");
 
-  const posts = await getPosts("til");
+  const blogPosts = await getPosts("blog");
+  const tilPosts = await getPosts("til");
+  const posts = [...blogPosts, ...tilPosts];
 
   return {
     props: {
@@ -26,37 +28,22 @@ export const getStaticProps: GetStaticProps<{
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
-  const canonicalUrl = `${BASE_URL}/til`;
+  const canonicalUrl = `${BASE_URL}/blog`;
   return (
     <>
       <NextSeo
-        title="TIL"
-        description="Collection of brief documented learnings."
+        title="Blog"
+        description="Personal posts about anything."
         canonical={canonicalUrl}
       />
       <header className="prose mb-8 sm:prose-xl">
-        <h1>TIL – Today I Learned</h1>
-        <p>
-          Collection of brief documented learnings.{" "}
-          <Link href={"/til/feed.xml"}>
-            <a className="text-primary-11 underline-offset-4 hover:no-underline">
-              Subscribe to RSS
-            </a>
-          </Link>
-          .
-        </p>
+        <h1>Blog</h1>
+        <p>Personal posts about anything.</p>
       </header>
       <ol className="space-y-4">
         {posts.map((post) => (
           <li key={post.name}>
             <article>
-              <h2 className="text-xl font-bold sm:text-2xl">
-                <Link as={`/til/${post.name}`} href={"/til/[name]"}>
-                  <a className="text-primary-11 underline-offset-4 hover:underline">
-                    {post.title}
-                  </a>
-                </Link>
-              </h2>
               <p>
                 <time
                   className="text-sm text-gray-11 sm:text-base"
@@ -65,6 +52,13 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   {formatDate(post.date)}
                 </time>
               </p>
+              <h2 className="text-xl font-bold sm:text-2xl">
+                <Link as={`/blog/${post.name}`} href={"/blog/[name]"}>
+                  <a className="text-primary-11 underline-offset-4 hover:underline">
+                    {post.title}
+                  </a>
+                </Link>
+              </h2>
             </article>
           </li>
         ))}

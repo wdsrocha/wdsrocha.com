@@ -98,12 +98,11 @@ module&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token 
 &lt;blockquote&gt;
 &lt;p&gt;If your server has a hole that lets the user store an arbitrary JSON object
 while the client code expects a string, React would be vulnerable to an XSS
-attack.&lt;/p&gt;
-&lt;p&gt;The fix in React 0.14 was to tag every React element with a Symbol.
+attack.The fix in React 0.14 was to tag every React element with a Symbol.
 So even if the server has a security hole and returns JSON instead of text,
 that JSON can’t include &lt;code&gt;Symbol.for('react.element')&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Source: &lt;a href="https://overreacted.io/why-do-react-elements-have-typeof-property/"&gt;https://overreacted.io/why-do-react-elements-have-typeof-property/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://overreacted.io/why-do-react-elements-have-typeof-property/"&gt;Why do React Elements Have typeof Property&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;If the browser doesen't support Symbols (what??), React could use an arbitrary
 value instead. The chosen value was the nummber &lt;code&gt;0xeac7&lt;/code&gt;. Why this number?
 &lt;a href="https://github.com/facebook/react/pull/4832/files#r39431415"&gt;It has a special property&lt;/a&gt;.&lt;/p&gt;

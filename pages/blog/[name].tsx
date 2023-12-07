@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import { formatDate } from "../../lib/common";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getPosts("til");
+  const posts = await getPosts("blog");
 
   return {
     fallback: false,
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
     return { notFound: true };
   }
 
-  const post = await getPostByFilename(`${params.name}.md`, "til");
+  const post = await getPostByFilename(`${params.name}.md`, "blog");
 
   return {
     props: {
@@ -43,12 +43,12 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
 }) => {
   const { name, title, description, date, content } = post;
-  const canonicalUrl = `${BASE_URL}/til/${name}`;
+  const canonicalUrl = `${BASE_URL}/blog/${name}`;
 
   return (
     <>
       <NextSeo
-        title={`${title} | TIL`}
+        title={`${title} | Blog`}
         description={description}
         canonical={canonicalUrl}
         twitter={{
