@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import { formatDate } from "../../lib/common";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getPosts("blog");
+  const posts = await getPosts();
 
   return {
     fallback: false,
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<{ post: Post }> = async ({
     return { notFound: true };
   }
 
-  const post = await getPostByFilename(`${params.name}.md`, "blog");
+  const post = await getPostByFilename(`${params.name}.md`);
 
   return {
     props: {
