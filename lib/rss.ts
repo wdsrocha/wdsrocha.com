@@ -275,14 +275,11 @@ function toXml(data: Rss): string {
 
 const RFC822_FORMAT_WITHOUT_TZ = "ddd, DD MMM YYYY HH:mm:ss";
 
-export const rssConfig = (type: string): Rss => ({
-  title: `Wesley Rocha | ${type.toUpperCase()}`,
-  link: `${BASE_URL}/${type}`,
-  atomLink: `${BASE_URL}/${type}/rss.xml`,
-  description:
-    type == "blog"
-      ? "Personal posts about anything"
-      : "Collection of brief documented learnings",
+export const rssConfig: Rss = {
+  title: "Wesley Rocha's Blog",
+  link: `${BASE_URL}/blog`,
+  atomLink: `${BASE_URL}/blog/feed.xml`,
+  description: "Personal posts about anything",
   language: "en",
   copyright: "Copyright 2022, Wesley Rocha",
   managingEditor: "hi@wdsrocha.com (Wesley Rocha)",
@@ -293,18 +290,18 @@ export const rssConfig = (type: string): Rss => ({
     height: 32,
   },
   items: [],
-});
+};
 
-export async function generateRssFeed(dir: string): Promise<void> {
+export async function generateRssFeed(): Promise<void> {
   const posts = await getPosts();
 
   const data: Rss = {
-    ...rssConfig(dir),
+    ...rssConfig,
     items: posts.map((post) => ({
       title: post.title,
       description: post.description ?? "",
-      link: `${BASE_URL}/${dir}/${post.name}`,
-      guid: `${BASE_URL}/${dir}/${post.name}`,
+      link: `${BASE_URL}/blog/${post.name}`,
+      guid: `${BASE_URL}/blog/${post.name}`,
       pubDate: `${dayjs(post.date, "YYYY-MM-DD").format(
         RFC822_FORMAT_WITHOUT_TZ
       )} GMT`,
@@ -313,5 +310,5 @@ export async function generateRssFeed(dir: string): Promise<void> {
 
   const xml = toXml(data);
 
-  fs.writeFileSync(`./public/${dir}/feed.xml`, xml);
+  fs.writeFileSync(`./public/blog/feed.xml`, xml);
 }

@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps<{
   allTags: string[];
   posts: Pick<Post, "title" | "name" | "date" | "tags">[];
 }> = async () => {
-  await generateRssFeed("blog");
+  await generateRssFeed();
 
   const posts = await getPosts();
 
