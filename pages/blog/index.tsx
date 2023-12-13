@@ -1,45 +1,160 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
+import cn from "classnames";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { formatDate } from "../../lib/common";
 import { BASE_URL } from "../../lib/constants";
 import { Post, getPosts, pickPostFields } from "../../lib/posts";
 import { generateRssFeed } from "../../lib/rss";
+import { useRouter } from "next/router";
 
 export const getStaticProps: GetStaticProps<{
-  posts: Pick<Post, "title" | "name" | "date">[];
+  allTags: string[];
+  posts: Pick<Post, "title" | "name" | "date" | "tags">[];
 }> = async () => {
   await generateRssFeed("blog");
 
   const posts = await getPosts();
 
+  const allTags =
+    posts
+      .map((post) => post.tags ?? [])
+      .filter((tags) => tags && tags.length > 0)
+      .flat()
+      .filter((tag, index, tags) => tags.indexOf(tag) === index) ?? [];
+
   return {
     props: {
+      allTags,
       posts: posts.map((post) =>
-        pickPostFields(post, ["title", "name", "date"])
+        pickPostFields(post, ["title", "name", "date", "tags"])
       ),
     },
   };
 };
 
+const Tag = ({
+  tag,
+  selected = false,
+  onClick,
+}: {
+  tag: string;
+  selected?: boolean;
+  onClick?: () => void;
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "inline-flex items-center rounded-md px-2 py-1 text-xs font-medium",
+        {
+          "bg-mauve-3 text-mauve-11 hover:bg-mauve-4 active:bg-mauve-5":
+            !selected,
+          "bg-pink-3 text-pink-11 hover:bg-pink-4 active:bg-pink-5": selected,
+        }
+      )}
+    >
+      {tag}
+    </button>
+  );
+};
+
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  allTags,
   posts,
 }) => {
   const canonicalUrl = `${BASE_URL}/blog`;
+  const router = useRouter();
+
+  const [selectedTags, setSelectedTags] = useState<string[]>(() => {
+    let queryTags: string[] = [];
+
+    if (Array.isArray(router.query.tags)) {
+      queryTags = router.query.tags.join(",").split(",");
+    }
+
+    if (typeof router.query.tags === "string") {
+      queryTags = router.query.tags.split(",");
+    }
+
+    return queryTags.filter((tag) => allTags.includes(tag));
+  });
+
+  const clearSelectedTags = () => {
+    setSelectedTags([]);
+
+    const query = router.query;
+    delete query.tags;
+
+    router.push(
+      {
+        query: {},
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+  const onTagClick = (tag: string) => {
+    const newSelectedTags = selectedTags.includes(tag)
+      ? selectedTags.filter((t) => t !== tag)
+      : [...selectedTags, tag];
+
+    setSelectedTags(newSelectedTags);
+    router.push(
+      {
+        query: {
+          tags:
+            newSelectedTags.length > 0 ? newSelectedTags.join(",") : undefined,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+  const filteredPosts = posts.filter((post) => {
+    if (selectedTags.length === 0) {
+      return true;
+    }
+
+    return post.tags?.some((tag) => selectedTags.includes(tag));
+  });
+
   return (
-    <>
+    <div className="flex flex-col gap-y-8">
       <NextSeo
         title="Blog"
         description="Personal posts about anything."
         canonical={canonicalUrl}
       />
-      <header className="prose mb-8 sm:prose-xl">
+      <header className="prose sm:prose-xl">
         <h1>Blog</h1>
-        <p>Personal posts about anything.</p>
+        <p>Personal posts about anything. Subscribe to the RSS</p>
       </header>
+      <div className="flex items-center gap-x-2">
+        <ul className="flex items-center gap-x-2">
+          <li>
+            <Tag
+              tag="All Tags"
+              selected={selectedTags.length === 0}
+              onClick={clearSelectedTags}
+            />
+          </li>
+          {allTags.map((tag) => (
+            <li key={tag}>
+              <Tag
+                tag={tag}
+                selected={selectedTags.includes(tag)}
+                onClick={() => onTagClick(tag)}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
       <ol className="space-y-4">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <li key={post.name}>
             <article>
               <p>
@@ -57,11 +172,24 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   </a>
                 </Link>
               </h2>
+              {post.tags && post.tags.length > 0 && (
+                <ul className="mt-1 flex items-center gap-x-2">
+                  {post.tags.map((tag) => (
+                    <li key={tag}>
+                      <Tag
+                        tag={tag}
+                        selected={selectedTags.includes(tag)}
+                        onClick={() => onTagClick(tag)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              )}
             </article>
           </li>
         ))}
       </ol>
-    </>
+    </div>
   );
 };
 
