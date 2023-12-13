@@ -102,5 +102,152 @@ calibration_values &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span cl
 &lt;/ul&gt;
 </content:encoded>
     </item>
+    <item>
+      <title>Histogram Equalization</title>
+      <link>https://www.wdsrocha.com/blog/histogram-equalization</link>
+      <description>This is a Digital Image Processing technique to improve contrast in an image.</description>
+      <guid>https://www.wdsrocha.com/blog/histogram-equalization</guid>
+      <pubDate>Thu, 13 Apr 2023 02:46:13 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;Histogram Equalization&lt;/h1&gt;
+&lt;p&gt;This is a Digital Image Processing technique to improve contrast in an image. See the example below.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src="https://assets.tina.io/388cd044-c947-463a-aa2b-0bc55cbd986a/til/histogram-equalization_opencv-example.jpg" alt="Two versions of the same grayscale landscape image side by side. The first one has poor contrast and the second one has good contrast. It's way easier to visualize all the landscape details in the second one." /&gt;
+  &lt;figcaption&gt;Source: &lt;a href="https://opencv24-python-tutorials.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_histograms/py_histogram_equalization/py_histogram_equalization.html#histograms-equalization-in-opencv"&gt;OpenCV Histogram Equalization tutorial&lt;/a&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Here are some good explanations on the subject:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=WuVyG4pg9xQ"&gt;Introduction to Histogram Equalization (video)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Histogram_equalization"&gt;Wikipedia (actually good)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://people.ece.ubc.ca/~irenek/techpaps/introip/manual02.html"&gt;Example with few pixels&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Skip GitHub Actions CI</title>
+      <link>https://www.wdsrocha.com/blog/skip-github-actions-ci</link>
+      <description>Add `[no ci]` to a commit message and it will skip GitHub CI.</description>
+      <guid>https://www.wdsrocha.com/blog/skip-github-actions-ci</guid>
+      <pubDate>Fri, 24 Mar 2023 10:06:25 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;Skip GitHub Actions CI&lt;/h1&gt;
+&lt;p&gt;Add &lt;code&gt;[no ci]&lt;/code&gt; to a commit message and it will skip GitHub CI.&lt;/p&gt;
+&lt;p&gt;There are exceptions and more ways to consistently skip CI for things like updates in markdown files. These are explained in the &lt;a href="https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs"&gt;official documentation&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Inserting visual separators with Tailwind</title>
+      <link>https://www.wdsrocha.com/blog/inserting-visual-separators-with-tailwind</link>
+      <description/>
+      <guid>https://www.wdsrocha.com/blog/inserting-visual-separators-with-tailwind</guid>
+      <pubDate>Sun, 05 Mar 2023 18:13:10 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;Inserting visual separators with Tailwind&lt;/h1&gt;
+&lt;p&gt;Tailwind allows to use &lt;a href="https://tailwindcss.com/docs/hover-focus-and-other-states#using-arbitrary-variants"&gt;arbitrary values&lt;/a&gt; to write selectors. Here is an example of a breadcrumb separated by the &lt;code&gt;&gt;&lt;/code&gt; character:&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-javascript"&gt;&lt;code class="language-javascript"&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;div &lt;span class="token keyword"&gt;class&lt;/span&gt;&lt;span class="token operator"&gt;=&lt;/span&gt;&lt;span class="token string"&gt;"[&&gt;:not(:first-child):before]:content-['&gt;_']"&lt;/span&gt;&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Clothes&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Men&lt;/span&gt;'s &lt;span class="token maybe-class-name"&gt;Clothes&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Shoes&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Current&lt;/span&gt; &lt;span class="token maybe-class-name"&gt;Page&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;div&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src="https://assets.tina.io/388cd044-c947-463a-aa2b-0bc55cbd986a/til/inserting-visual-separators-with-tailwind_breadcrumb.png" alt="A string equal to "Clothes &gt; Men's &gt; Clothes &gt; Shoes &gt; Current Page" rendered inside an HTML page." title="Breadcrumb generated by the code above."&gt;&lt;/p&gt;
+&lt;p&gt;To reduce verbosity, you can &lt;a href="https://tailwindcss.com/docs/plugins#adding-variants"&gt;add the variant&lt;/a&gt; to you tailwind config file.&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-javascript"&gt;&lt;code class="language-javascript"&gt;&lt;span class="token comment"&gt;// tailwind.config.js&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; plugin &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token function"&gt;require&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"tailwindcss/plugin"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+module&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token property-access"&gt;exports&lt;/span&gt; &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;{&lt;/span&gt;
+  &lt;span class="token literal-property property"&gt;plugins&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;
+    &lt;span class="token function"&gt;plugin&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token parameter"&gt;&lt;span class="token punctuation"&gt;{&lt;/span&gt; addVariant &lt;span class="token punctuation"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt; &lt;span class="token arrow operator"&gt;=&gt;&lt;/span&gt;
+      &lt;span class="token function"&gt;addVariant&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"between"&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt; &lt;span class="token string"&gt;"&&gt;:not(:first-child):before"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+  &lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+&lt;span class="token punctuation"&gt;}&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And you will be able to use it like any other existing variant.&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-javascript"&gt;&lt;code class="language-javascript"&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;div &lt;span class="token keyword"&gt;class&lt;/span&gt;&lt;span class="token operator"&gt;=&lt;/span&gt;&lt;span class="token string"&gt;"between:content-['&gt;_']"&lt;/span&gt;&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Clothes&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Men&lt;/span&gt;'s &lt;span class="token maybe-class-name"&gt;Clothes&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Shoes&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+  &lt;span class="token operator"&gt;&lt;&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;&lt;span class="token maybe-class-name"&gt;Current&lt;/span&gt; &lt;span class="token maybe-class-name"&gt;Page&lt;/span&gt;&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;span&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+&lt;span class="token operator"&gt;&lt;&lt;/span&gt;&lt;span class="token operator"&gt;/&lt;/span&gt;div&lt;span class="token operator"&gt;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href="https://play.tailwindcss.com/4xS3OI7p2m"&gt;Sandbox&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Accessibility concern&lt;/h2&gt;
+&lt;p&gt;Keep in mind that the &lt;code&gt;:before&lt;/code&gt; pseudo element is only used for decorative purposes so screen readers ignore them. If the content you want to display is actually meaningful, consider using JavaScript. &lt;a href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/"&gt;See the WAI-ARIA explanation&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Symbol protects React from XSS attacks</title>
+      <link>https://www.wdsrocha.com/blog/symbol-protects-react-from-xss-attacks</link>
+      <description>If your server has a hole that lets the user store an arbitrary JSON object while the client code expects a string, React would be vulnerable to an XSS attack.</description>
+      <guid>https://www.wdsrocha.com/blog/symbol-protects-react-from-xss-attacks</guid>
+      <pubDate>Sat, 29 Oct 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;&lt;code&gt;Symbol&lt;/code&gt; protects React from XSS attacks&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If your server has a hole that lets the user store an arbitrary JSON object
+while the client code expects a string, React would be vulnerable to an XSS
+attack.The fix in React 0.14 was to tag every React element with a Symbol.
+So even if the server has a security hole and returns JSON instead of text,
+that JSON can’t include &lt;code&gt;Symbol.for('react.element')&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Source: &lt;a href="https://overreacted.io/why-do-react-elements-have-typeof-property/"&gt;Why do React Elements Have typeof Property&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If the browser doesen't support Symbols (what??), React could use an arbitrary
+value instead. The chosen value was the nummber &lt;code&gt;0xeac7&lt;/code&gt;. Why this number?
+&lt;a href="https://github.com/facebook/react/pull/4832/files#r39431415"&gt;It has a special property&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>location.replace() removes current page from the browser history</title>
+      <link>https://www.wdsrocha.com/blog/location-replace-removes-current-page-from-the-browser-history</link>
+      <description>Found out about this after clicking an exteral link in a page and not being able to go back to the source. How could a link behave like that? Turns out that it was a button with location.replace() for its onClick event.</description>
+      <guid>https://www.wdsrocha.com/blog/location-replace-removes-current-page-from-the-browser-history</guid>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;&lt;code&gt;location.replace()&lt;/code&gt; removes current page from the browser history&lt;/h1&gt;
+&lt;p&gt;Found out about this after clicking an exteral link in a page and not being able
+to go back to the source. How could a link behave like that? Turns out that it
+was a button with &lt;code&gt;location.replace()&lt;/code&gt; for its &lt;code&gt;onClick&lt;/code&gt; event.&lt;/p&gt;
+&lt;p&gt;Thats why you should use anchors for links instead of buttons.
+&lt;a href="https://heydonworks.com/article/reinventing-the-hyperlink/" title="Reinveinting the Hyperlink | heydonworks"&gt;Or a div&lt;/a&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>Emails can contain apostrophes</title>
+      <link>https://www.wdsrocha.com/blog/emails-can-contain-apostrophes</link>
+      <description>As stated in RFC 3696, apostrophes can be used before the @</description>
+      <guid>https://www.wdsrocha.com/blog/emails-can-contain-apostrophes</guid>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;Emails can contain apostrophes&lt;/h1&gt;
+&lt;p&gt;As stated in &lt;a href="https://www.rfc-editor.org/rfc/rfc3696"&gt;RFC 3696&lt;/a&gt;, apostrophes can be used before the &lt;code&gt;@&lt;/code&gt;.&lt;/p&gt;
+</content:encoded>
+    </item>
+    <item>
+      <title>yarn run displays all available commands</title>
+      <link>https://www.wdsrocha.com/blog/yarn-run-displays-all-available-commands</link>
+      <description>yarn run will display all available binary scripts and user defined scripts from the package.json file.</description>
+      <guid>https://www.wdsrocha.com/blog/yarn-run-displays-all-available-commands</guid>
+      <pubDate>Tue, 27 Sep 2022 00:00:00 GMT</pubDate>
+      <content:encoded>&lt;h1&gt;&lt;code&gt;yarn run&lt;/code&gt; displays all available commands&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;yarn run&lt;/code&gt; will display all available binary scripts and user defined scripts
+from the &lt;code&gt;package.json&lt;/code&gt; file. Also, the same works for &lt;code&gt;npm run&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;For the following &lt;code&gt;package.json&lt;/code&gt; (only scripts):&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-json"&gt;&lt;code class="language-json"&gt;&lt;span class="token property"&gt;"scripts"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token punctuation"&gt;{&lt;/span&gt;
+  &lt;span class="token property"&gt;"build"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token string"&gt;"build-storybook"&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+  &lt;span class="token property"&gt;"lint"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token string"&gt;"eslint --ext js,jsx,ts,tsx ."&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+  &lt;span class="token property"&gt;"storybook"&lt;/span&gt;&lt;span class="token operator"&gt;:&lt;/span&gt; &lt;span class="token string"&gt;"start-storybook --no-open -p 6006"&lt;/span&gt;
+&lt;span class="token punctuation"&gt;}&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It will look something like that:&lt;/p&gt;
+&lt;div class="remark-highlight"&gt;&lt;pre class="language-unknown"&gt;&lt;code class="language-unknown"&gt;$ yarn run
+yarn run v1.22.19
+info Commands available from binary scripts: autoprefixer, build-storybook, eslint, start-storybook, storybook-server, tailwind, tailwindcss, tsc, tsserver, acorn, ansi-html, ansi-to-html, atob, browserslist, c8, chrome-debug, color-support, cssesc, cypress, default-browser-id, detect, detect-port, detective, errno, esbuild, escodegen, esgenerate, eslint-config-prettier, esparse, esvalidate, extract-zip, handlebars, he, html-minifier-terser, husky, import-local-fixture, is-ci, is-docker, jest, js-yaml, jsesc, json5, lhci, lighthouse, lint-staged, loose-envify, lz-string, miller-rabin, mime, mkdirp, nanoid, next, node-which, opener, parser, prettier, ps-tree, qrcode, raven, rc, react-docgen, regjsparser, rimraf, sane, semver, server-test, sha.js, smokehouse, sshpk-conv, sshpk-sign, sshpk-verify, start-server-and-test, start-test, strip-indent, terser, tree-kill, turbo, uglifyjs, uuid, wait-on, watch, webpack, webpack-bundle-analyzer, x-default-browser
+info Project commands
+   - build
+      build-storybook
+   - lint
+      eslint --ext js,jsx,ts,tsx .
+   - storybook
+      start-storybook --no-open -p 6006
+question Which command would you like to run?:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content:encoded>
+    </item>
   </channel>
 </rss>
