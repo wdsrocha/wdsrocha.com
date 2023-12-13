@@ -1,6 +1,5 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { NextSeo } from "next-seo";
-import cn from "classnames";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { formatDate } from "../../lib/common";
@@ -8,6 +7,7 @@ import { BASE_URL } from "../../lib/constants";
 import { Post, getPosts, pickPostFields } from "../../lib/posts";
 import { generateRssFeed } from "../../lib/rss";
 import { useRouter } from "next/router";
+import { Tag } from "../../components/Tag";
 
 export const getStaticProps: GetStaticProps<{
   allTags: string[];
@@ -32,32 +32,6 @@ export const getStaticProps: GetStaticProps<{
       ),
     },
   };
-};
-
-const Tag = ({
-  tag,
-  selected = false,
-  onClick,
-}: {
-  tag: string;
-  selected?: boolean;
-  onClick?: () => void;
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "inline-flex items-center rounded-md px-2 py-1 text-xs font-medium",
-        {
-          "bg-mauve-3 text-mauve-11 hover:bg-mauve-4 active:bg-mauve-5":
-            !selected,
-          "bg-pink-3 text-pink-11 hover:bg-pink-4 active:bg-pink-5": selected,
-        }
-      )}
-    >
-      {tag}
-    </button>
-  );
 };
 
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
