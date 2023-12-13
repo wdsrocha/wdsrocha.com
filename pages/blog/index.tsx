@@ -172,7 +172,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                   </a>
                 </Link>
               </h2>
-              {post.tags && post.tags.length > 0 && (
+              {post.tags.length > 0 && (
                 <ul className="mt-1 flex items-center gap-x-2">
                   {post.tags.map((tag) => (
                     <li key={tag}>

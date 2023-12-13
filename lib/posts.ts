@@ -56,7 +56,7 @@ const postScheme = z
     description: z.string().optional(),
     content: z.string(),
     published: z.boolean(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()),
   })
   .strict();
 
@@ -79,6 +79,7 @@ export async function getPostByFilename(filename: string): Promise<Post> {
   const post = postScheme.parse(
     {
       ...data,
+      tags: data.tags ?? [],
       name: path.parse(filename).name,
       content: await markdownToHtml(content),
     },
