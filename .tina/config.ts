@@ -112,64 +112,6 @@ export default defineConfig({
         ],
       },
       {
-        label: "TIL Posts",
-        name: "til",
-        path: "contents/til",
-        format: "md",
-        ui: {
-          filename: {
-            slugify: (values) => {
-              const old = (values?.title ?? "")
-                ?.toLowerCase()
-                .replace(/ /g, "-");
-              const current = customSlugify(values.title);
-              console.log({ old, current });
-              return old;
-            },
-          },
-          defaultItem: () => ({
-            date: new Date().toISOString(),
-            published: false,
-          }),
-        },
-        fields: [
-          {
-            type: "rich-text",
-            label: "Content",
-            name: "content",
-            isBody: true,
-          },
-          {
-            type: "string",
-            label: "Title",
-            name: "title",
-            description: "Should match content H1",
-            required: true,
-            isTitle: true,
-          },
-          {
-            type: "datetime",
-            required: true,
-            name: "date",
-            label: "Created at",
-          },
-          {
-            type: "string",
-            label: "Description",
-            name: "description",
-            description: "Brief description used in SEO and RSS",
-            ui: {
-              component: "textarea",
-            },
-          },
-          {
-            type: "boolean",
-            name: "published",
-            label: "Publish?",
-          },
-        ],
-      },
-      {
         label: "Freestyle App",
         name: "freestyle_app_privacy",
         path: "contents/freestyle-app",
