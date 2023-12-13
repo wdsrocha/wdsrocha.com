@@ -11,6 +11,7 @@ import { BASE_URL } from "../../lib/constants";
 import { Post, getPosts, getPostByFilename } from "../../lib/posts";
 import dayjs from "dayjs";
 import { formatDate } from "../../lib/common";
+import { Tag } from "../../components/Tag";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPosts();
@@ -60,6 +61,13 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <p className="text-base italic text-gray-11 sm:text-xl">
         Published on <time dateTime={date}>{formatDate(date)}</time>
       </p>
+      <ul className="flex items-center gap-x-2">
+        {post.tags.map((tag) => (
+          <li key={tag}>
+            <Tag tag={tag} disabled={true} selected={true} />
+          </li>
+        ))}
+      </ul>
       <ContentRenderer>{content}</ContentRenderer>
     </>
   );
