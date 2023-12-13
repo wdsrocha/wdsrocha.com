@@ -12,9 +12,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async () => {
   await generateRssFeed("blog");
 
-  const blogPosts = await getPosts("blog");
-  const tilPosts = await getPosts("til");
-  const posts = [...blogPosts, ...tilPosts];
+  const posts = await getPosts();
 
   return {
     props: {

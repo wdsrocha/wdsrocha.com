@@ -76,12 +76,6 @@ export default defineConfig({
         },
         fields: [
           {
-            type: "rich-text",
-            label: "Content",
-            name: "content",
-            isBody: true,
-          },
-          {
             type: "string",
             label: "Title",
             name: "title",
@@ -103,6 +97,21 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "string",
+            label: "Tags",
+            name: "tags",
+            list: true,
+            ui: {
+              component: "tags",
+            },
+          },
+          {
+            type: "rich-text",
+            label: "Content",
+            name: "content",
+            isBody: true,
           },
           {
             type: "boolean",

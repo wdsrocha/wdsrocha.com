@@ -3,6 +3,9 @@ title: "[AoC 2023] Dia 1: Vencendo com Lookaround \U0001F440"
 date: '2023-12-02T05:10:14.272Z'
 published: true
 description: "Ontem se iniciou mais um Advent of Code e dessa vez farei meu melhor para durar mais do que dois dias \U0001F64F.\n\nO enunciado do primeiro desafio pode ser lido aqui: https://adventofcode.com/2023/day/1\n"
+tags:
+  - Python
+  - Advent of Code
 ---
 
 # \[AoC 2023] Dia 1: Vencendo com Lookaround 👀
@@ -46,7 +49,7 @@ Logo, para consertar a expressão regular do desafio basta adicionar o *positive
 
 `/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g`
 
-Se não estiver muito claro, sugiro brincar um pouco no [regex101](https://regex101.com/) e verificar os tutoriais na seção de referências, lá em baixo.
+Se não estiver muito claro, sugiro brincar um pouco no [regex101](https://regex101.com/ "") e verificar os tutoriais na seção de referências, lá em baixo.
 
 Solução completa:
 
@@ -102,5 +105,5 @@ O que me surpreendeu é que o pessoal teve o trabalho de pensar em qual parte da
 ## Referências
 
 * Explicação leve sobre *lookaround*: [How to do overlapping matches with regular expressions](https://mtsknn.fi/blog/how-to-do-overlapping-matches-with-regular-expressions/#:~\:text=Turns%20out%20that%20when%20the,capture%20overlapping%20pairs%20of%20letters. "")
-* Explicação pesada sobre *lookaround*: [Mastering Lookahead and Lookbehind](https://www.rexegg.com/regex-lookarounds.html)
-* Tweet do malandro: [https://twitter.com/championswimmer/status/1730667285415948767](https://twitter.com/championswimmer/status/1730667285415948767)
+* Explicação pesada sobre *lookaround*: [Mastering Lookahead and Lookbehind](https://www.rexegg.com/regex-lookarounds.html "")
+* Tweet do malandro: [https://twitter.com/championswimmer/status/1730667285415948767](https://twitter.com/championswimmer/status/1730667285415948767 "")

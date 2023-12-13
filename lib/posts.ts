@@ -56,6 +56,7 @@ const postScheme = z
     description: z.string().optional(),
     content: z.string(),
     published: z.boolean(),
+    tags: z.array(z.string()).optional(),
   })
   .strict();
 
@@ -71,11 +72,8 @@ export function pickPostFields<Field extends keyof Post>(
   );
 }
 
-export async function getPostByFilename(
-  filename: string,
-  dir: string
-): Promise<Post> {
-  const fullPath = path.join(process.cwd(), "contents", dir, filename);
+export async function getPostByFilename(filename: string): Promise<Post> {
+  const fullPath = path.join(process.cwd(), "contents", "blog", filename);
   const file = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(file);
   const post = postScheme.parse(
@@ -91,11 +89,11 @@ export async function getPostByFilename(
 }
 
 // Returns only the published ones!
-export async function getPosts(dir: string): Promise<Post[]> {
+export async function getPosts(): Promise<Post[]> {
   const promises = fs
-    .readdirSync(path.join(process.cwd(), "contents", dir))
+    .readdirSync(path.join(process.cwd(), "contents", "blog"))
     .filter((filename) => filename.endsWith(".md"))
-    .map((filename) => getPostByFilename(filename, dir));
+    .map((filename) => getPostByFilename(filename));
 
   const posts = await Promise.all(promises);
 

@@ -7,6 +7,8 @@ description: >-
   while the client code expects a string, React would be vulnerable to an XSS
   attack.
 published: true
+tags:
+  - TIL
 ---
 
 # `Symbol` protects React from XSS attacks

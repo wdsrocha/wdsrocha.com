@@ -3,6 +3,8 @@ title: Skip GitHub Actions CI
 date: '2023-03-24T14:06:25.802Z'
 description: 'Add `[no ci]` to a commit message and it will skip GitHub CI.'
 published: true
+tags:
+  - TIL
 ---
 
 # Skip GitHub Actions CI

@@ -6,6 +6,8 @@ description: >-
   able to go back to the source. How could a link behave like that? Turns out
   that it was a button with location.replace() for its onClick event.
 published: true
+tags:
+  - TIL
 ---
 
 # `location.replace()` removes current page from the browser history

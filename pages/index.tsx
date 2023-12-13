@@ -11,9 +11,7 @@ export const getStaticProps: GetStaticProps<{
   posts: Pick<Post, "title" | "name" | "date">[];
 }> = async () => {
   const home = await getHome();
-  const blogPosts = await getPosts("blog");
-  const tilPosts = await getPosts("til");
-  const posts = [...blogPosts, ...tilPosts].slice(0, 5);
+  const posts = (await getPosts()).slice(0, 5);
 
   return {
     props: {

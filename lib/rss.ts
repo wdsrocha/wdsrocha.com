@@ -292,7 +292,7 @@ export const rssConfig = (type: string): Rss => ({
 });
 
 export async function generateRssFeed(dir: string): Promise<void> {
-  const posts = await getPosts(dir);
+  const posts = await getPosts();
 
   const data: Rss = {
     ...rssConfig(dir),

@@ -28,10 +28,6 @@ export const Layout = ({ children }: Props) => {
           <Link href="/blog" passHref>
             <a className="hover:underline">Blog</a>
           </Link>
-          {/* <span aria-hidden={true}>•</span>
-          <Link href="/til" passHref>
-            <a className="hover:underline">TIL</a>
-          </Link> */}
         </div>
       </header>
       <div className="mb-8 flex-grow">

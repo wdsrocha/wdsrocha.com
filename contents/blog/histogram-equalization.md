@@ -3,6 +3,8 @@ title: Histogram Equalization
 date: '2023-04-13T06:46:13.013Z'
 description: This is a Digital Image Processing technique to improve contrast in an image.
 published: true
+tags:
+  - TIL
 ---
 
 # Histogram Equalization
