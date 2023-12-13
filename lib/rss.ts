@@ -259,6 +259,10 @@ function toXml(data: Rss): string {
           guid: item.guid,
           pubDate: item.pubDate,
           source: item.source,
+          // Used to pass `post.content` (from frontmatter) here, but it started
+          // to break in some bad-encoded codeblock characters. Maybe this is
+          // worth to take a look in the future, but for now, having the short
+          // description and link to the real content is enough.
           "content:encoded": item.content,
         })),
       },
@@ -304,7 +308,6 @@ export async function generateRssFeed(dir: string): Promise<void> {
       pubDate: `${dayjs(post.date, "YYYY-MM-DD").format(
         RFC822_FORMAT_WITHOUT_TZ
       )} GMT`,
-      content: post.content,
     })),
   };
 

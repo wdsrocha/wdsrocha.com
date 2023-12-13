@@ -105,7 +105,15 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       />
       <header className="prose sm:prose-xl">
         <h1>Blog</h1>
-        <p>Personal posts about anything. Subscribe to the RSS</p>
+        <p>
+          Personal posts about anything.{" "}
+          <Link href="/blog/feed.xml">
+            <a className="text-pink-11 hover:no-underline">
+              Subscribe to the RSS
+            </a>
+          </Link>
+          .
+        </p>
       </header>
       <div className="flex items-center gap-x-2">
         <ul className="flex items-center gap-x-2">
