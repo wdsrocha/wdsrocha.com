@@ -86,6 +86,8 @@ export async function getPostByFilename(filename: string): Promise<Post> {
     { errorMap: getContextualErrorMap(filename) }
   );
 
+  post.tags = post.tags.sort();
+
   return post;
 }
 
@@ -101,4 +103,12 @@ export async function getPosts(): Promise<Post[]> {
   return posts
     .filter((post) => post.published)
     .sort((a, b) => (a.date > b.date ? -1 : 1));
+}
+
+export async function getAllTags(): Promise<string[]> {
+  const posts = await getPosts();
+  const tags = posts.flatMap((post) => post.tags);
+  const uniqueTags = Array.from(new Set(tags));
+
+  return uniqueTags.sort();
 }

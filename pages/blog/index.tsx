@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { formatDate } from "../../lib/common";
 import { BASE_URL } from "../../lib/constants";
-import { Post, getPosts, pickPostFields } from "../../lib/posts";
+import { Post, getAllTags, getPosts, pickPostFields } from "../../lib/posts";
 import { generateRssFeed } from "../../lib/rss";
 import { useRouter } from "next/router";
 import { Tag } from "../../components/Tag";
@@ -16,13 +16,7 @@ export const getStaticProps: GetStaticProps<{
   await generateRssFeed();
 
   const posts = await getPosts();
-
-  const allTags =
-    posts
-      .map((post) => post.tags ?? [])
-      .filter((tags) => tags && tags.length > 0)
-      .flat()
-      .filter((tag, index, tags) => tags.indexOf(tag) === index) ?? [];
+  const allTags = await getAllTags();
 
   return {
     props: {
