@@ -1,7 +1,7 @@
 ---
 title: "[AoC 2023] Dia 1: Vencendo com Lookaround \U0001F440"
 date: '2023-12-02T05:10:14.272Z'
-published: true
+published: false
 description: "Ontem se iniciou mais um Advent of Code e dessa vez farei meu melhor para durar mais do que dois dias \U0001F64F.\n\nO enunciado do primeiro desafio pode ser lido aqui: https://adventofcode.com/2023/day/1\n"
 tags:
   - "\U0001F1E7\U0001F1F7"
