@@ -1,6 +1,9 @@
 import { defineConfig } from "tinacms";
 
-const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+// Use the actual branch for main/master, otherwise fall back to "main" for TinaCMS
+// This prevents 403 errors when building feature branches that aren't authorized in TinaCMS Cloud
+const actualBranch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+const branch = ["main", "master"].includes(actualBranch) ? actualBranch : "main";
 
 function customSlugify(text: string | undefined) {
   return (text ?? "")
