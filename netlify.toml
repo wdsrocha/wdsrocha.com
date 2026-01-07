@@ -1,7 +1,0 @@
-[build]
-  command = "yarn build"
-  publish = ".next"
-  ignore = "bash scripts/netlify-ignore-build.sh"
-
-[build.environment]
-  NODE_VERSION = "16"
