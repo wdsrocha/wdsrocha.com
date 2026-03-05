@@ -121,6 +121,56 @@ export default defineConfig({
         ],
       },
       {
+        label: "Bookmarks",
+        name: "bookmarks",
+        path: "contents/bookmarks",
+        format: "md",
+        ui: {
+          filename: {
+            slugify: (values) => customSlugify(values.title),
+          },
+          defaultItem: () => ({
+            date: new Date().toISOString(),
+            published: false,
+          }),
+        },
+        fields: [
+          {
+            type: "string",
+            label: "Title",
+            name: "title",
+            required: true,
+            isTitle: true,
+          },
+          {
+            type: "string",
+            label: "URL",
+            name: "url",
+            required: true,
+          },
+          {
+            type: "datetime",
+            required: true,
+            name: "date",
+            label: "Added at",
+          },
+          {
+            type: "string",
+            label: "Description",
+            name: "description",
+            description: "Optional: your brief opinion about the link",
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "boolean",
+            name: "published",
+            label: "Publish?",
+          },
+        ],
+      },
+      {
         label: "Freestyle App",
         name: "freestyle_app_privacy",
         path: "contents/freestyle-app",
