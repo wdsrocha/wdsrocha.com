@@ -3,15 +3,18 @@ import { NextSeo } from "next-seo";
 import React from "react";
 import { ContentRenderer } from "../components/ContentRenderer";
 import { getHome, getPosts, Home, pickPostFields, Post } from "../lib/posts";
+import { Bookmark, getBookmarks } from "../lib/bookmarks";
 import { formatDate } from "../lib/common";
 import Link from "next/link";
 
 export const getStaticProps: GetStaticProps<{
   home: Home;
   posts: Pick<Post, "title" | "name" | "date">[];
+  bookmarks: Pick<Bookmark, "name" | "title" | "url" | "date" | "description">[];
 }> = async () => {
   const home = await getHome();
   const posts = (await getPosts()).slice(0, 5);
+  const latestBookmarks = (await getBookmarks()).slice(0, 5);
 
   return {
     props: {
@@ -19,6 +22,13 @@ export const getStaticProps: GetStaticProps<{
       posts: posts.map((post) =>
         pickPostFields(post, ["title", "name", "date"])
       ),
+      bookmarks: latestBookmarks.map(({ name, title, url, date, description }) => ({
+        name,
+        title,
+        url,
+        date,
+        ...(description !== undefined && { description }),
+      })),
     },
   };
 };
@@ -26,6 +36,7 @@ export const getStaticProps: GetStaticProps<{
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   home,
   posts,
+  bookmarks,
 }) => {
   const { content, description } = home;
   const canonicalUrl = `https://www.wdsrocha.com`;
@@ -57,6 +68,41 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                     </a>
                   </Link>
                 </h2>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <br />
+      <section className="space-y-6">
+        <header className="prose sm:prose-xl">
+          <h2>Latest bookmarks</h2>
+        </header>
+        <ol className="space-y-4">
+          {bookmarks.map((bookmark) => (
+            <li key={bookmark.name}>
+              <article>
+                <p>
+                  <time
+                    className="text-sm text-gray-11 sm:text-base"
+                    dateTime={bookmark.date}
+                  >
+                    {formatDate(bookmark.date)}
+                  </time>
+                </p>
+                <h2 className="text-xl font-bold sm:text-2xl">
+                  <a
+                    href={bookmark.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-11 underline-offset-4 hover:underline"
+                  >
+                    {bookmark.title}
+                  </a>
+                </h2>
+                {bookmark.description && (
+                  <p className="mt-1 text-gray-11">{bookmark.description}</p>
+                )}
               </article>
             </li>
           ))}
